@@ -1,0 +1,155 @@
+.builderCss {
+  font-family: 'Roboto', sans-serif;
+}
+.builderCss h2 {
+  font-family: BigNoodleTitling;
+  font-size: 50px;
+  color: #0D5D5F;
+  margin-bottom: 60px;
+  letter-spacing: 4px;
+}
+.builderCss h2.center {
+  text-align: center;
+}
+.builderCss h3 {
+  font-family: BigNoodleTitling;
+  font-size: 30px;
+  color: #272B2D;
+  margin-bottom: 6px;
+  letter-spacing: 1.5px;
+}
+.builderCss h4 {
+  font-family: BigNoodleTitling;
+  font-size: 20px;
+  color: #00BA95;
+  /* Salmon design: */
+  letter-spacing: 1.5px;
+  margin-bottom: 20px;
+}
+.builderCss .container {
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 0 70px;
+  height: 100%;
+}
+.builderCss a {
+  text-decoration: none;
+}
+.builderCss a.btn {
+  color: #FFFFFF;
+  padding: 15px 25px;
+  margin-right: 40px;
+  opacity: 0.7;
+  transition: all 0.2s ease-out;
+  font-size: 14px;
+  text-decoration: none;
+  display: inline-block;
+}
+.builderCss a.btn:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+.builderCss a.btn.btn-primary {
+  background: #0D5D5F;
+  border: none;
+}
+.builderCss a.btn.btn-secondary {
+  background: none;
+  border: solid 1px #0D5D5F;
+}
+.builderCss .block {
+  padding: 60px 0px;
+}
+.builderCss .gradient {
+  background: linear-gradient(135deg, #00BA95 0%, #00919F 100%);
+}
+.builderCss .grey {
+  background: #EAF1F2;
+}
+.builderCss #topBlock {
+  height: 100vh;
+}
+.builderCss #topBlock #header {
+  height: 38px;
+  padding-top: 30px;
+}
+.builderCss #topBlock #header img {
+  width: 90px;
+  float: left;
+}
+.builderCss #topBlock #header .rightNav {
+  float: right;
+}
+.builderCss #topBlock #header .rightNav li a {
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+  opacity: 0.8;
+}
+.builderCss #topBlock #header .rightNav li a:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+.builderCss #topBlock #tagline {
+  margin-top: 20vh;
+  z-index: 1;
+}
+.builderCss #topBlock #tagline h1 {
+  font-family: BigNoodleTitling;
+  font-size: 5em;
+  color: #FFFFFF;
+}
+.builderCss #topBlock #tagline p {
+  font-family: BigNoodleTitling;
+  font-size: 20px;
+  color: #FFFFFF;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+.builderCss #topBlock #topImg {
+  width: 60vw;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 0;
+}
+.builderCss #stepsBlock {
+  overflow: hidden;
+}
+.builderCss #stepsBlock ul li {
+  float: left;
+  width: 33.33%;
+  text-align: center;
+}
+.builderCss #stepsBlock ul li img {
+  width: 120px;
+  margin-bottom: 16px;
+}
+.builderCss #stepsBlock ul li p {
+  font-size: 16px;
+  color: #6D7A82;
+  text-align: center;
+}
+.builderCss #designsBlock {
+  overflow: hidden;
+}
+.builderCss #designsBlock img {
+  float: left;
+  bottom: 0;
+  width: 350px;
+  margin-bottom: -60px;
+}
+.builderCss #designsBlock .right {
+  float: right;
+  width: calc(100% - 420px);
+  margin-top: 40px;
+}
+.builderCss #designsBlock .right .quote {
+  font-size: 14px;
+  color: #6D7A82;
+  line-height: 28px;
+  font-style: italic;
+}
+.builderCss #footer {
+  background-color: #0D5D5F;
+}

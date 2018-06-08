@@ -1,0 +1,361 @@
+out:  cv.css
+
+@bigscreen: ~"only screen and (min-width: 600px)";
+@smallscreen: ~"only screen and (max-width: 600px)";
+@primary : #FCC1A7;
+@secondary : #495359;
+@grey: #EBECF0;
+
+#ResumePage {
+  width: 100vw;
+  height: 100vh;
+  overflow: scroll;
+}
+
+.resume1css {
+  background-image: url(../img/wood.jpg);
+  a {text-decoration: none;}
+  a:hover {cursor: pointer;}
+
+  p {
+    font-size: 12px;
+    line-height: 20px;
+  }
+  #resume {
+    max-width: 595px;
+    margin: 0px auto;
+    padding-top: 50px;
+    h1 {
+      color: #495359;
+      font-family: 'Rokkitt', serif;
+      font-size: 22px;
+      letter-spacing: 3px;
+      line-height: 35px;
+      font-weight: 300;
+    }
+    h2 {
+      display: inline-block;
+      font-size: 16px;
+      line-height: 20px;
+      color: #495359;
+      font-weight: bold;
+      letter-spacing: 1.19px;
+      text-transform: uppercase;
+      padding-bottom: 20px;
+      padding-top: 40px;
+    }
+    h3 {font-size: 14px;}
+    .fa {
+      font-size: 20px;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+    a:hover p, a:hover .fa {color: #000 }
+    #page1, #page2 {
+      margin: 20px auto;
+      background-color: #FFF;
+      box-shadow: 0 1px 7px 0 rgba(0, 0, 0, 0.16);
+      overflow: hidden;
+      height: 842px;
+      .flexcontent {
+        justify-content: space-between;
+        display: flex;
+        &.center {
+          text-align: center;
+          .columnLeft {padding: 0px}
+          .columnRight {padding: 0px}
+        }
+        .columnLeft {
+          flex: 1;
+          &.timeline {
+            h2 {
+              margin-left: 70px;
+            }
+            .container {
+              padding: 55px 0px 60px;
+              margin-bottom: -20px;
+              .item {
+                margin-bottom: 25px;
+                .left {
+                  float: left;
+                  width: 32px;
+                  color: @primary;
+                  text-align: right;
+                  line-height: 18px;
+                  font-size: 14px;
+                  font-weight: lighter;
+                  &:before {
+                    content: '';
+                    display: inline-block;
+                    width: 10px;
+                    height: 10px;
+                    border-radius: 10px;
+                    background: #FFFFFF;
+                    border: 2px solid @grey;
+                    float: right;
+                    margin: 3px -23px;
+                  }
+                }
+                .right {
+                  margin-left: 70px;
+                }
+                h3 {
+                  font-weight: bold;
+                  line-height: 20px;
+                }
+              }
+            }
+            &:before {
+              content:"";
+              position: absolute;
+              z-index: 0;
+              top: 0;
+              bottom: 0;
+              left: 47px;
+              border-left: 2px solid @grey;
+            }
+          }
+        }
+        .columnRight {
+          flex: 1;
+          .item {
+            margin-bottom: 15px;
+          }
+        }
+      }
+      .columncenter {
+        h1 {color: @primary;}
+        .content {
+          text-align: justify;
+          margin: 40px auto 0 auto;
+          width: 400px;
+          p {margin-bottom: 20px;}
+        }
+      }
+    }
+    #page1 {
+      padding: 50px 50px 30px 50px;
+      #headerbg {
+        position: absolute;
+        height: 285px;
+        width: 120%;
+        background-image: url(../img/marble.jpg);
+        margin: -122px -90px;
+        -webkit-transform: rotate(10deg);
+        -ms-transform: rotate(10deg);
+        transform: rotate(10deg);
+        background-size: cover;
+        z-index: 1;
+      }
+      #header {
+        text-align: right;
+        z-index: 2;
+        margin-top: 30px;
+        margin-left: 50px;
+        #signed {
+          margin-top: 10px;
+          font-family: HelveticaNeue-Bold;
+          font-size: 20px;
+          color: @secondary;
+          letter-spacing: 1.59px;
+        }
+      }
+      .flexcontent {
+        height: 695px;
+        .columnRight {
+          flex: unset;
+          width: 40%;
+          padding-top: 55px;
+        }
+      }
+      #triangles {
+        margin-top: -70px;
+        overflow: hidden;
+      }
+    }
+    #page2 {
+      padding: 50px;
+      #why {
+        z-index: 1;
+        background-color: #FFF;
+      }
+      .columncenter {
+        height: 450px;
+      }
+      .container {
+        z-index: 1;
+        background-color: #FFF;
+        height: 400px;
+      }
+      #information {
+        position: absolute;
+        width: 395px;
+        padding: 50px;
+        bottom: 0px;
+      }
+      #footer {
+        background-image: url(../img/marble.jpg);
+        transform: rotate(10deg);
+        background-size: cover;
+        padding-bottom: 1px;
+        position: absolute;
+        top: 500px;
+        left: -100px;
+        width: 120%;
+        height: 100%;
+        z-index: 0;
+      }
+    }
+    #triangle1 {
+      position: absolute;
+      left: -50px;
+      top: -40px;
+      display: inline-block;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 61px 0 69px 126px;
+      border-color: transparent transparent transparent @primary;
+      filter: drop-shadow(6px 6px 12px rgba(0,0,0,0.21176470588235294));
+          transform: rotate(-52deg);
+    }
+    #triangle2 {
+      display: inline-block;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 90px 200px 90px 0;
+      border-color: transparent @secondary transparent transparent;
+
+      filter: drop-shadow(6px 6px 12px rgba(0,0,0,0.21176470588235294));
+      transform: rotate(43deg);
+    }
+    #triangle3 {
+      left: -45px;
+      top: -90px;
+
+      display: inline-block;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 20px 0 20px 40px;
+      border-color: transparent transparent transparent @primary;
+
+      filter: drop-shadow(6px 6px 12px rgba(0,0,0,0.21176470588235294));
+      transform: rotate(-60deg);
+    }
+    #triangle4 {
+      display: inline-block;
+      left: -45px;
+      bottom: -73px;
+      margin-top: -100px;
+      border-style: solid;
+      border-width: 70px 138px 70px 0;
+      border-color: transparent @secondary transparent transparent;
+      filter: drop-shadow(6px 6px 12px rgba(0, 0, 0, 0.21176471));
+      transform: rotate(58deg);
+
+    }
+    #triangle5 {
+      left: 423px;
+      top: 137px;
+      margin-top: -135px;
+      display: inline-block;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 90px 0 90px 170px;
+      border-color: transparent transparent transparent @primary;
+      filter: drop-shadow(6px 6px 12px rgba(0,0,0,0.21176470588235294));
+      transform: rotate(-60deg);
+    }
+
+    .barRating {
+      height: 5px;
+      margin: 5px 0px;
+      width: 100%;
+      .bar {
+        height: 100%;
+        width: 100%;
+        background-color: #EBECF0;
+      }
+      .rating {
+        height: 100%;
+        background-color: @primary;
+        top: -100%;
+      }
+    }
+  }
+
+  @media @smallscreen {
+    #resume {
+      h1 {
+      font-size: 22px;
+      letter-spacing: 2px;
+      line-height: 25px;
+      }
+      #page1, #page2 {
+        margin: auto 15px 15px 15px;
+        .timeline {
+          border-bottom: 2px solid @grey;
+          margin: 0 auto;
+        }
+        .flexcontent {
+          display: initial;
+          .columnRight {
+            padding-top: 0px;
+            width: 100%;
+          }
+        }
+        .columnRight {
+          padding: 20px 30px 40px 30px;
+        }
+        .bullet {display: none;}
+        .tooltip {display: none;}
+      }
+      #page1 {
+        padding: 50px 20px 0px 20px;
+        height: auto;
+        #headerbg {margin: -122px -40px;}
+        #header {
+          margin: 0;
+        }
+        #triangles {display: none;}
+      }
+      #page2 {
+        padding: 25px;
+        height: auto;
+        .columncenter {
+          height: auto;
+          .content {width: auto;}
+        }
+        .container {
+          height: auto;
+          .flexcontent {
+            display: block;
+          }
+        }
+        #information {
+          width: 100%;
+          margin: 20px auto;
+          text-align: center;
+          border-top: 2px solid @grey;
+          position: relative;
+          padding: 20px 0;
+          .columnRight {
+            margin-top: 40px;
+          }
+        }
+        #footer {
+          left: -115px;
+          width: 150%;
+          top: auto;
+          bottom: -577px;
+        }
+      }
+    }
+    #triangle1 {left: -15px;}
+    #triangle4 { border-width: 55px 110px 55px 0;}
+  }
+
+}

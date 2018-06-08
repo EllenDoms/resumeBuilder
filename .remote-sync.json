@@ -1,0 +1,20 @@
+{
+  "logger": {
+    "title": "Resume"
+  },
+  "transport": "ftp",
+  "uploadOnSave": false,
+  "useAtomicWrites": false,
+  "deleteLocal": false,
+  "hostname": "ftp.ellendoms.com",
+  "port": "21",
+  "target": "/resume-builder",
+  "source": "/build",
+  "ignore": [
+    ".remote-sync.json",
+    ".git/**"
+  ],
+  "username": "ellendoms.com",
+  "password": "Kiekeboe1988!",
+  "watch": []
+}

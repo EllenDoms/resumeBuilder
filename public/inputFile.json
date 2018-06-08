@@ -1,0 +1,97 @@
+  {
+    "information":
+      {
+        "firstName": "Ellen",
+        "lastName": "Doms",
+        "quote": "It is impossible to summarize what I can do on one piece of paper.",
+        "email": "domsellen@gmail.com",
+        "website": "ellendoms.com",
+        "telephone": "+32 473 24 49 43",
+        "linkedin": "linkedin.com/in/ellen-doms/",
+        "dribbble": "dribbble.com/domsellen",
+        "github": "github.com/domsellen"
+      },
+
+    "experience": [
+      {
+        "timeto": "Now",
+        "timefrom": "",
+        "title": "Junior Developer",
+        "where": "APPetizer"
+      },
+      {
+        "timeto": 2018,
+        "timefrom": 2017,
+        "title": "Product Owner",
+        "where": "Teamleader"
+      },
+      {
+        "timeto": 2017,
+        "timefrom": 2013,
+        "title": "Product Designer (UX/UI)",
+        "where": "Teamleader"
+      },
+      {
+        "timeto": 2013,
+        "timefrom": 2012,
+        "title": "All round Graphic Designer",
+        "where": "Teamleader"
+      }],
+
+    "education": [
+      {
+        "timeto": 2012,
+        "timefrom": 2011,
+        "title": "Web- and Interactive design",
+        "where": "Master degree"
+      },
+      {
+        "timeto": 2011,
+        "timefrom": 2007,
+        "title": "Web- and Interactive design",
+        "where": "Bachelor degree"
+      }],
+
+    "skills": ["Usability & UX", "Product Design", "Prototyping", "Atomic design", "Agile working", "Frontend", "NL-EN-(FR)"],
+
+    "expertise": [
+        {"title": "Sketch and illustrator", "rating": 100 },
+        {"title": "Jira", "rating": 90 },
+        {"title": "HTML/CSS/SCSS", "rating": 90 },
+        {"title": "Javascript", "rating": 30 },
+        {"title": "React", "rating": 30 },
+        {"title": "PHP & Mysql", "rating": 10 }
+    ],
+
+    "intro" : {
+        "title": "What makes me so special?",
+        "content": ["I’ve been passionate about a lot of things in my life. And it wasn’t until recently that I discovered the common thread in all of it: learning new things is exciting! And it’s because of that quality, that I managed to gain a wide variety of skills." ,
+        "It’s the combination of all my skills that makes me an asset in projects. Improving usability, user test a prototype, writing code or do a presentation in front of 100 people, I think it's all fascinating." ,
+        "I had the opportunity to see a company grow from 5 to 160 people. This helped a lot in developing the soft skills needed in both smaller and bigger teams!"]
+    },
+
+    "personality" : ["Creative", "Think outside the box", "Analytical", "Communicative"],
+
+    "passions" : ["Travel", "Photography", "Badminton (sports)", "Sketching", "Sewing dresses"],
+
+    "tooltips" : {
+      "experience": {
+        "title": "My portfolio",
+        "description": "I'm very proud of the things I made. Want to take a look at my portfolio?",
+        "projectLink": "http://ellendoms.com"
+      },
+      "education": {
+        "title": "A-style: Master project",
+        "description": "Not a part of my portfolio, but a project I spend a lot of time on. An online wardrobe to mix and match clothes: Make combinations while shopping or when you already bought them."
+      },
+      "expertise": {
+        "title": "Contact me",
+        "description": "How much can a bar-chart actually tell you? I should elaborate on this, so get in touch!"
+      },
+      "passions": {
+        "title": "Add me on instagram!",
+        "description": "It might come as a surprise, but I have some cool stuff I do when I'm not working. Go, and follow me on instagram!",
+        "projectLink": "https://www.instagram.com/domsellen/"
+      }
+    }
+  }

@@ -1,0 +1,95 @@
+out:  form.css
+
+@bigscreen: ~"only screen and (min-width: 600px)";
+@smallscreen: ~"only screen and (max-width: 600px)";
+@primary : #FCC1A7;
+@secondary : #495359;
+@grey: #EBECF0;
+@greyLight: #F7F7F7;
+
+h1 {
+  font-size: 30px;
+  font-weight: normal;
+}
+
+form {
+  padding: 50px 20%;
+  h2 {
+    border-top: @grey 1px solid;
+    margin-top: 20px;
+    padding-top: 20px;
+    margin-bottom: 15px;
+  }
+  h3 {margin-bottom: 5px;}
+  .half {
+    width: 48%;
+    float: left;
+    z-index: 1;
+    &.left { margin-right: 2%; }
+    &.right { margin-left: 2%; }
+  }
+  .whole { width: 100%; }
+  .addItem{
+    background-color: @greyLight;
+    border: 1px solid  @grey;
+    overflow: hidden;
+    padding: 20px;
+    margin-top: 10px;
+  }
+  .error {
+    color: @primary;
+    display: inline-block;
+    padding: 5px 0px 0px;
+    font-size: 12px;
+  }
+  .has-danger {
+    .error {
+      float: right;
+    }
+    input, textarea, .rw-drowpdown-list {
+      border: solid 1px @primary;
+    }
+  }
+
+  label {
+    display: inline-block;
+    padding: 5px 0px 0px;
+    font-size: 12px;
+  }
+  input, textarea, .rw-dropdown-list {
+    padding: 10px 10px;
+    margin: 5px 0px;
+    width: ~"calc(100% - 20px)";
+    background-color: #FFF;
+    border-radius: 3px;
+    border: 1px solid @grey;
+    &:focus {
+      border: solid 1px purple;
+    }
+  }
+  button {
+    margin: 5px 0px;
+    border: none;
+    background: none;
+    .floatingBtn {
+      margin: 10px 10px 10px 0px;
+      padding: 2px;
+      background-color: @primary;
+      color: #FFF;
+      border-radius: 20px;
+    }
+    .btnLabel {
+      top: -7px;
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+  .saveBtn {
+    padding: 10px 20px;
+    background-color: @secondary;
+    color: #fff;
+    margin: 20px 0px;
+    float: right;
+  }
+}
