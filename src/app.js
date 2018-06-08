@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import promise from 'redux-promise';
 import reduxThunk from 'redux-thunk';
-import { HashRouter as Router, Route } from 'react-router-dom';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import { fetchUser } from "./actions";
 import { connect } from "react-redux";
 
@@ -26,15 +26,17 @@ class App extends Component {
 
   render() {
     return (
-      <Router>
-        <div id='page'>
-          <Route exact path="/" component={LandingsPage} />
-          <Route exact path="/notFound" component={NotFound} />
-          <Route exact path="/new" component={requireAuth(ResumeNewPage)} />
-          <Route exact path="/login" component={SignInPage} />
-          <Route path="/resume/:id" component={ResumePage} />
-        </div>
-      </Router>
+      <BrowserRouter>
+        <Switch>
+          <div id='page'>
+            <Route exact path="/" component={LandingsPage} />
+            <Route exact path="/notFound" component={NotFound} />
+            <Route exact path="/new" component={requireAuth(ResumeNewPage)} />
+            <Route exact path="/login" component={SignInPage} />
+            <Route path="/resume/:id" component={ResumePage} />
+          </div>
+        </Switch>
+      </BrowserRouter>
     );
   }
 }
