@@ -7,7 +7,7 @@ import reduxThunk from 'redux-thunk';
 import { HashRouter as Router, Route } from 'react-router-dom';
 import reducers from './reducers';
 
-import App from "./app";
+import App from "./components/app";
 import registerServiceWorker from "./registerServiceWorker";
 
 const createStoreWithMiddleware = applyMiddleware(promise, reduxThunk)(createStore);

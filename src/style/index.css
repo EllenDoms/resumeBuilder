@@ -7,12 +7,14 @@
   font-smoothing: antialiased;
   -webkit-font-smoothing: antialiased;
 }
-
 body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-
+}
+#page {
+  min-height: 100vh;
 }
 
-#page { min-height: 100vh; }
+.material-icons { color: #999FA3; }
+.material-icons:hover { color: #122E48; }

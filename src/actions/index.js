@@ -1,5 +1,5 @@
-import { FETCH_USER, FETCH_NOTFOUND, FETCH_SUCCESS, POST_RESUME } from './types';
-import { config, authRef, provider } from "../config/firebase";
+import { FETCH_USER, FETCH_RESUMES, FETCH_NOTFOUND, FETCH_SUCCESS, POST_RESUME } from './types';
+import { config, authRef, databaseRef, provider } from "../config/firebase";
 
 import axios from 'axios';
 
@@ -48,7 +48,6 @@ function checkData(data) {
 export function fetchResume(version) {
   return dispatch => {
     const url = config.databaseURL + version + config.auth;
-    console.log(url)
     return axios.get(url)
     .then(data => {
       if(!data.data) {
@@ -60,7 +59,7 @@ export function fetchResume(version) {
           dispatch(fetchSuccess(false, data.data));
         } else {
           console.log('Nono, File no good.');
-        };
+        }
       }
     })
     .catch(error => console.log('BAD', error))
@@ -90,10 +89,20 @@ export const fetchUser = () => dispatch => {
       dispatch({
         type: FETCH_USER,
         payload: null
-      });
+      })
     }
-  });
+  })
 };
+
+export const fetchResumes = uid => async dispatch => {
+  databaseRef.orderByChild("user").equalTo(uid)
+  .on('value', snap => {
+    dispatch({
+      type: FETCH_RESUMES,
+      payload: snap.val()
+    })
+  })
+}
 
 export const signIn = () => dispatch => {
   authRef

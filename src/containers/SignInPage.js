@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { signIn } from "../actions";
 import PropTypes from "prop-types";
-import '../style/index.css';
-import '../style/signIn.css';
+
 
 class Signin extends Component {
   static contextTypes = {

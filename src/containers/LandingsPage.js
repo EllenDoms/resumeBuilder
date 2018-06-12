@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom'; //navigate in app
 
-import "../style/landingspage.css";
-
 import logo from '../img/logo.png';
 import topImg from '../img/topImg.png';
 import step1 from '../img/icon/info.png';
@@ -18,7 +16,7 @@ export default class LandingsPage extends Component {
       <div id="LandingsPage" className="builderCss">
         <div id="topBlock" className="gradient">
           <div className="container">
-            <div id="header">
+            <div id="header" className="landing">
               <img src={logo} />
               <ul className="rightNav">
                 <li><Link to={`/login`}>Login/Signup</Link></li>
@@ -27,7 +25,7 @@ export default class LandingsPage extends Component {
             <div id="tagline">
               <h1 className="fontsforweb_bignoodletitling">Build Your resume. <br/>Get the job.</h1>
               <p className="fontsforweb_bignoodletitling">(Yes, it's that simple)</p>
-              <Link to={`/login`} className="btn btn-primary">Create account</Link>
+              <Link to={`/login`} className="btn btn-primary2">Create account</Link>
               <Link to={`/resume/resume`} className="btn btn-secondary">See demo</Link>
             </div>
           </div>
@@ -35,7 +33,7 @@ export default class LandingsPage extends Component {
         </div>
         <div id="stepsBlock" className="block white center">
           <div className="container">
-            <h2 className="fontsforweb_bignoodletitling center">15 minutes. 3 easy steps.</h2>
+            <h2 className="fontsforweb_bignoodletitling center high">15 minutes. 3 easy steps.</h2>
             <ul>
               <li><img src={step1} /><p>Add your info.</p></li>
               <li><img src={step2} /><p>Choose a design.</p></li>
@@ -46,7 +44,7 @@ export default class LandingsPage extends Component {
         <div id="designsBlock" className="block grey">
           <div className="container">
             <div className="right">
-              <h3 className="fontsforweb_bignoodletitling">Ellen Doms</h3>
+              <h2 className="fontsforweb_bignoodletitling">Ellen Doms</h2>
               <h4 className="fontsforweb_bignoodletitling">Salmon design</h4>
               <div className="quote">“I've built this tool because I needed it myself. I didn't find another resume builder with designs that stood out.”</div>
             </div>

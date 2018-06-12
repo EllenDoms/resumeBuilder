@@ -7,13 +7,12 @@ export const config = {
   projectId: "resume-db248",
   storageBucket: "resume-db248.appspot.com",
   messagingSenderId: "1006018239430",
-  auth: "/.json?auth=EBRWKRaOxTSi7t9dAdeRL4sbv74SWh4VSUJErfgI"
+  auth: ".json?auth=EBRWKRaOxTSi7t9dAdeRL4sbv74SWh4VSUJErfgI"
 };
 if (!firebase.apps.length) {
   firebase.initializeApp(config);
 }
 
-const databaseRef = firebase.database().ref();
-export const todosRef = databaseRef.child("todos");
 export const authRef = firebase.auth();
+export const databaseRef = firebase.database().ref();
 export const provider = new firebase.auth.GoogleAuthProvider();

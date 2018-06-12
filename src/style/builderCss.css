@@ -1,22 +1,31 @@
 .builderCss {
   font-family: 'Roboto', sans-serif;
 }
+.builderCss h1 {
+  font-family: BigNoodleTitling;
+  font-size: 8vw;
+  color: #FFFFFF;
+}
 .builderCss h2 {
   font-family: BigNoodleTitling;
   font-size: 50px;
-  color: #0D5D5F;
-  margin-bottom: 60px;
+  color: #122E48;
+  margin-bottom: 15px;
   letter-spacing: 4px;
 }
 .builderCss h2.center {
   text-align: center;
 }
+.builderCss h2.white {
+  color: #FFF;
+}
+.builderCss h2.high {
+  margin-bottom: 60px;
+}
 .builderCss h3 {
-  font-family: BigNoodleTitling;
-  font-size: 30px;
-  color: #272B2D;
-  margin-bottom: 6px;
-  letter-spacing: 1.5px;
+  font-size: 16px;
+  color: #122E48;
+  letter-spacing: 1;
 }
 .builderCss h4 {
   font-family: BigNoodleTitling;
@@ -30,12 +39,11 @@
   margin: 0 auto;
   max-width: 1200px;
   padding: 0 6%;
-  height: 100%;
 }
 .builderCss a {
   text-decoration: none;
 }
-.builderCss a.btn {
+.builderCss .btn {
   color: #FFFFFF;
   padding: 15px 25px;
   margin-right: 40px;
@@ -45,18 +53,58 @@
   text-decoration: none;
   display: inline-block;
   margin-bottom: 20px;
+  background: none;
+  border: none;
 }
-.builderCss a.btn:hover {
+.builderCss .btn.btn-primary {
+  background: #00BA95;
+}
+.builderCss .btn.btn-primary2 {
+  background: #122E48;
+}
+.builderCss .btn.btn-secondary {
+  border: solid 1px #122E48;
+}
+.builderCss .btn:hover {
   opacity: 1;
   cursor: pointer;
 }
-.builderCss a.btn.btn-primary {
-  background: #0D5D5F;
-  border: none;
+.builderCss #pageContent {
+  min-height: calc(100vh - 193px);
+  background-color: #F9FAFB;
+  z-index: 0;
+  padding-top: 40px;
 }
-.builderCss a.btn.btn-secondary {
-  background: none;
-  border: solid 1px #0D5D5F;
+.builderCss #pageContent #newCard {
+  background: #FFFFFF;
+  border: 1px dashed #E3E7EB;
+  color: #999FA3;
+  font-size: 16px;
+  line-height: 280px;
+  height: 280px;
+  text-align: center;
+}
+.builderCss #pageContent .resumeCard {
+  background: #FFFFFF;
+  box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.08);
+  height: 280px;
+}
+.builderCss #pageContent .resumeCard .btn {
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 0;
+}
+.builderCss #pageContent .resumeCard .cardHeader {
+  padding: 20px 30px;
+  line-height: 24px;
+}
+.builderCss #pageContent .resumeCard .cardHeader h3 {
+  width: calc(100% - 24px);
+}
+.builderCss #pageContent .resumeCard .cardHeader .iconRight {
+  float: right;
 }
 .builderCss .block {
   padding: 60px 0px;
@@ -67,38 +115,63 @@
 .builderCss .grey {
   background: #EAF1F2;
 }
-.builderCss #topBlock {
-  height: 100vh;
+.builderCss #header {
+  height: 52px;
+  padding-top: 16px;
+  z-index: 3;
 }
-.builderCss #topBlock #header {
-  height: 38px;
-  padding-top: 30px;
-}
-.builderCss #topBlock #header img {
+.builderCss #header img {
   width: 90px;
   float: left;
 }
-.builderCss #topBlock #header .rightNav {
+.builderCss #header .rightNav {
   float: right;
 }
-.builderCss #topBlock #header .rightNav li a {
-  color: #fff;
+.builderCss #header .rightNav li a {
+  color: #999FA3;
   font-size: 12px;
   font-weight: bold;
   opacity: 0.8;
 }
-.builderCss #topBlock #header .rightNav li a:hover {
+.builderCss #header .rightNav li a:hover {
   opacity: 1;
   cursor: pointer;
+}
+.builderCss #header.landing {
+  height: 38px;
+  padding-top: 30px;
+}
+.builderCss #header.landing li a {
+  color: #FFF;
+}
+.builderCss .flex-grid {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.builderCss .flex-grid .col {
+  flex: 0 1 32%;
+  margin-bottom: 15px;
+}
+.builderCss #welcome {
+  background-image: linear-gradient(133deg, #1F4160 0%, #122E48 99%);
+  box-shadow: inset 0 0 20px 0 rgba(0, 0, 0, 0.4);
+  padding-top: 24px;
+  z-index: 2;
+}
+.builderCss #welcome .appQuote {
+  background: #FFFFFF;
+  box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.2);
+  text-align: center;
+  padding: 10px;
+  bottom: -15px;
+}
+.builderCss #topBlock {
+  height: 100vh;
 }
 .builderCss #topBlock #tagline {
   margin-top: 20vh;
   z-index: 1;
-}
-.builderCss #topBlock #tagline h1 {
-  font-family: BigNoodleTitling;
-  font-size: 8vw;
-  color: #FFFFFF;
 }
 .builderCss #topBlock #tagline p {
   font-family: BigNoodleTitling;
@@ -128,7 +201,7 @@
 }
 .builderCss #stepsBlock ul li p {
   font-size: 16px;
-  color: #6D7A82;
+  color: #999FA3;
   text-align: center;
 }
 .builderCss #designsBlock {
@@ -147,12 +220,12 @@
 }
 .builderCss #designsBlock .right .quote {
   font-size: 14px;
-  color: #6D7A82;
+  color: #999FA3;
   line-height: 28px;
   font-style: italic;
 }
 .builderCss #footer {
-  background-color: #0D5D5F;
+  background-color: #122E48;
 }
 @media only screen and (max-width: 600px) {
   .builderCss #topBlock #tagline h1 {

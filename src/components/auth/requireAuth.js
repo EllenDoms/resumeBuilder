@@ -6,7 +6,7 @@ export default function(ComposedComponent) {
   class Authentication extends Component {
     static contextTypes = {
       router: PropTypes.object
-    };
+    }
 
     componentWillMount() {
       if (this.props.authenticated === null) {
@@ -23,7 +23,7 @@ export default function(ComposedComponent) {
     render() {
       if (this.props.authenticated) {
         return (<div>
-          <ComposedComponent {...this.props} />;
+          <ComposedComponent {...this.props} />
         </div> )
 
       }

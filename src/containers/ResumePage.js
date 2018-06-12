@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { fetchResume } from '../actions';
-import '../style/cv.css';
 import Tooltip from '../containers/Tooltip';
 import { connect } from 'react-redux';
 import DownloadButton from '../components/downloadButton';
@@ -8,13 +7,16 @@ import DownloadButton from '../components/downloadButton';
 import NotFound from '../components/notFound';
 import Loading from '../components/loading';
 
+import '../style/cv.css';
+
+
 class Cv extends Component {
   componentDidMount() {
     console.log(this.props)
     if (!this.props.match.params.id) {
-      this.props.fetchResume('resume');
+      this.props.fetchResume('resume/');
     } else {
-      this.props.fetchResume(this.props.match.params.id);
+      this.props.fetchResume(this.props.match.params.id + '/');
     }
   }
   render() {

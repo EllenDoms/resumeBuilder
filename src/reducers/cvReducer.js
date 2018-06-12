@@ -1,4 +1,5 @@
-import { FETCH_SUCCESS, FETCH_NOTFOUND } from '../actions/types';
+import _ from 'lodash';
+import { FETCH_SUCCESS, FETCH_RESUMES, FETCH_NOTFOUND } from '../actions/types';
 
 const initialState = {
   resume: '',
@@ -21,6 +22,8 @@ export default function CvReducer (state = initialState, action) {
         resume: action.payload,
         loading: false
       };
+    case FETCH_RESUMES:
+      return action.payload;
     default:
       return state;
   }
