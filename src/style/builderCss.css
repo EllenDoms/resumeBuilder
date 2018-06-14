@@ -93,7 +93,7 @@
   position: absolute;
   bottom: 0;
   text-align: center;
-  width: 100%;
+  width: calc(100% - 50px);
   margin-bottom: 0;
 }
 .builderCss #pageContent .resumeCard .cardHeader {
@@ -119,6 +119,7 @@
   height: 52px;
   padding-top: 16px;
   z-index: 3;
+  border-bottom: solid 1px #EAF1F2;
 }
 .builderCss #header img {
   width: 90px;
@@ -152,6 +153,10 @@
 .builderCss .flex-grid .col {
   flex: 0 1 32%;
   margin-bottom: 15px;
+}
+.builderCss .flex-grid:after {
+  content: "";
+  flex-basis: 32%;
 }
 .builderCss #welcome {
   background-image: linear-gradient(133deg, #1F4160 0%, #122E48 99%);

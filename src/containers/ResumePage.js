@@ -9,18 +9,17 @@ import Loading from '../components/loading';
 
 import '../style/cv.css';
 
-
 class Cv extends Component {
   componentDidMount() {
-    console.log(this.props)
     if (!this.props.match.params.id) {
-      this.props.fetchResume('resume/');
+      this.props.fetchResume('demoresume/');
     } else {
       this.props.fetchResume(this.props.match.params.id + '/');
     }
   }
   render() {
     const { data, loading, notFound } = this.props;
+    console.log(data)
     if (loading) {
       return <Loading />;
     }
@@ -183,6 +182,7 @@ class Cv extends Component {
 }
 
 function mapStateToProps(state) {
+  console.log(state);
   return {
     data: state.data.resume,
     loading: state.data.loading,

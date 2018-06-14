@@ -31,16 +31,16 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <Switch>
-          <div id='page'>
+        <div id='page'>
+          <Switch>
             <Route exact path="/" component={LandingsPage} />
             <Route exact path="/notFound" component={NotFound} />
             <Route exact path="/user" component={requireAuth(UserPage)} />
-            <Route exact path="/new" component={requireAuth(ResumeNewPage)} />
+            <Route exact path="/new" component={ResumeNewPage} />
             <Route exact path="/login" component={SignInPage} />
             <Route path="/resume/:id" component={ResumePage} />
-          </div>
-        </Switch>
+          </Switch>
+        </div>
       </BrowserRouter>
     )
   }

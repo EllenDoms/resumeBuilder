@@ -1,13 +1,33 @@
-import { FETCH_USER, FETCH_RESUMES, FETCH_NOTFOUND, FETCH_SUCCESS, POST_RESUME } from './types';
+import { FETCH_USER, FETCH_LOADING, FETCH_NOTFOUND, FETCH_SUCCESS1, FETCH_SUCCESSOWN, SET_CURRENT, POST_RESUME } from './types';
 import { config, authRef, databaseRef, provider } from "../config/firebase";
+import * as firebase from "firebase";
 
 import axios from 'axios';
 
-function fetchSuccess(bool, data) {
+function fetchSuccess1(bool, current, id) {
+  console.log('fetch one')
   return {
-      type: FETCH_SUCCESS,
+      type: FETCH_SUCCESS1,
       loading: bool,
-      payload: data
+      payload : {
+        current,
+        id
+      }
+  };
+}
+function fetchSuccessOwn(bool, resumes) {
+  console.log("fetch own")
+  return {
+      type: FETCH_SUCCESSOWN,
+      loading: bool,
+      payload: resumes
+  };
+}
+
+function fetchLoading(bool, data) {
+  return {
+      type: FETCH_LOADING,
+      loading: bool,
   };
 }
 
@@ -22,7 +42,6 @@ function checkData(data) {
   //count characters in paragraph
   let characters = 0;
   data.intro.content.map(paragraph => { return characters = characters + paragraph.length });
-  console.log(data.skills)
   //check if input is ok
   return true;
    if (
@@ -45,37 +64,26 @@ function checkData(data) {
    }
 }
 
-export function fetchResume(version) {
-  return dispatch => {
-    const url = config.databaseURL + version + config.auth;
-    return axios.get(url)
-    .then(data => {
-      if(!data.data) {
-        dispatch(fetchNotFound(true))
-      } else {
-        const check = checkData(data.data);
-        if(check) {
-          console.log('file ok');
-          dispatch(fetchSuccess(false, data.data));
-        } else {
-          console.log('Nono, File no good.');
-        }
-      }
-    })
-    .catch(error => console.log('BAD', error))
-  }
+export const fetchResume = (id) => async dispatch => {
+  dispatch(fetchLoading(true))
+  const url = config.databaseURL + `resumes/${id}/` + config.auth;
+  console.log(url);
+  return axios.get(url)
+  .then(data => {
+    console.log(data.data)
+    if(!data) {
+      dispatch(fetchNotFound(true))
+    } else {
+      console.log(data.data)
+      dispatch(fetchSuccess1(false, data.data, id));
+    }
+  })
+  .catch(error => console.log('BAD', error))
 }
 
-export function postResume(values, callback) {
-  const url = config.databaseURL + config.auth;
-  const request = axios.post(url , values)
-    .then((response) => {
-      callback(response);
-    }); //promise if succesfully completed: do callback (go to other page)
-  return {
-    type: POST_RESUME,
-    payload: request
-  };
+export const postResumeValue = (values, id) => async dispatch => {
+  console.log(values)
+  return firebase.database().ref(`resumes/${id}`).set(values)
 }
 
 export const fetchUser = () => dispatch => {
@@ -95,12 +103,10 @@ export const fetchUser = () => dispatch => {
 };
 
 export const fetchResumes = uid => async dispatch => {
+  console.log('fetchResumes')
   databaseRef.orderByChild("user").equalTo(uid)
   .on('value', snap => {
-    dispatch({
-      type: FETCH_RESUMES,
-      payload: snap.val()
-    })
+    dispatch(fetchSuccessOwn(false, snap.val() ));
   })
 }
 

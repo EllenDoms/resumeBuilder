@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom'; //navigate in app
 import { fetchResumes } from '../actions';
 import { connect } from 'react-redux';
 
-import logo from '../img/logo2.png';
+
+import Header from '../components/header';
 import DropdownMenu from '../components/dropdownMenu';
 import Loading from '../components/loading';
 
@@ -12,19 +13,21 @@ import Loading from '../components/loading';
 class UserPage extends Component {
   componentWillMount() {
     const { authenticated } = this.props;
+    console.log('call fetchResumes')
     this.props.fetchResumes(authenticated.uid);
+    console.log('userpage')
   }
   renderResumes() {
-    return _.map(this.props.data, (resume, id) => {
+    return _.map(this.props.resumes, (resumes, id) => {
       return (
-        <a href={`/resume/${id}`} className="resumeCard col" key={id}>
+        <div className="resumeCard col" key={id}>
           <div className="cardHeader">
             <DropdownMenu />
-            <h3>{resume.name}</h3>
+            <h3>{resumes.resumeName}</h3>
           </div>
           <img className='demo' />
-          <button href="#" className='btn btn-primary'>Edit resume</button>
-        </a>
+          <Link to={{ pathname: '/new', id: id }} className='btn btn-primary'>Edit resume</Link>
+        </div>
       )
     })
   }
@@ -35,14 +38,7 @@ class UserPage extends Component {
     }
     return(
       <div className='builderCss'>
-        <div id="header">
-          <div className="container">
-            <img src={logo} />
-            <ul className="rightNav">
-              <li><Link to={`/logout`}>Logout</Link></li>
-            </ul>
-          </div>
-        </div>
+        <Header />
         <div id="welcome">
           <h2 className="fontsforweb_bignoodletitling center white">Hello {this.props.authenticated.displayName}!</h2>
           <div className="container">
@@ -63,8 +59,9 @@ class UserPage extends Component {
 }
 
 function mapStateToProps({data}) {
+  console.log(data)
   return {
-    data,
+    resumes: data.resumes,
     loading: data.loading
   };
 }

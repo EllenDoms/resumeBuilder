@@ -1,7 +1,13 @@
-import React, { Component } from 'react';
-import { Field, reduxForm } from 'redux-form';
-import DropdownList from 'react-widgets/lib/DropdownList';
+import React from 'react';
+import { Field } from 'redux-form';
 import '../style/form.css';
+
+export const InlineField = ({ input, label, type, className, meta: { touched, error, submitFailed } }) => (
+  <div className={`${className} ${(touched || submitFailed) && error ? 'has-danger' : ''} `} >
+    {(touched || submitFailed) && error && <span className="error">{error}</span>}
+    <input  {...input} type={type} />
+  </div>
+)
 
 export const ShortField = ({ input, label, type, className, meta: { touched, error, submitFailed } }) => (
   <div className={`${className} ${(touched || submitFailed) && error ? 'has-danger' : ''} `} >

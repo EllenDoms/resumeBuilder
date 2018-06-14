@@ -14,5 +14,5 @@ if (!firebase.apps.length) {
 }
 
 export const authRef = firebase.auth();
-export const databaseRef = firebase.database().ref();
+export const databaseRef = firebase.database().ref('resumes');
 export const provider = new firebase.auth.GoogleAuthProvider();

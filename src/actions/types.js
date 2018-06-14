@@ -1,5 +1,6 @@
 export const FETCH_USER = 'FETCH_USER';
-export const FETCH_RESUMES = 'FETCH_RESUMES';
-export const FETCH_SUCCESS = 'FETCH_SUCCESS';
+export const FETCH_LOADING = 'FETCH_LOADING';
+export const FETCH_SUCCESS1 = 'FETCH_SUCCESS1';
+export const FETCH_SUCCESSOWN = 'FETCH_SUCCESSOWN';
 export const FETCH_NOTFOUND = 'FETCH_NOTFOUND';
 export const POST_RESUME = 'POST_RESUME';

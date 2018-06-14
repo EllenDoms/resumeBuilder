@@ -95,7 +95,7 @@ out:  builderCss.css
         position: absolute;
         bottom: 0;
         text-align: center;
-        width: 100%;
+        width: ~"calc(100% - 50px)";
         margin-bottom: 0;
       }
       .cardHeader {
@@ -114,6 +114,7 @@ out:  builderCss.css
     height: 52px;
     padding-top: 16px;
     z-index: 3;
+    border-bottom: solid 1px @greylight;
     img {
       width: 90px;
       float: left;
@@ -144,6 +145,10 @@ out:  builderCss.css
     .col {
       flex: 0 1 32%;
       margin-bottom: 15px;
+    }
+    &:after {
+      content: "";
+      flex-basis: 32%;
     }
   }
   #welcome {
