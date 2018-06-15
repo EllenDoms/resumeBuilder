@@ -75,6 +75,7 @@ export const fetchUserResumes = uid => async dispatch => {
 }
 
 export const postResumeValue = (values, id) => async dispatch => {
+  console.log('posting resume')
   return firebase.database().ref(`resumes/${id}`).set(values)
 }
 
@@ -85,6 +86,7 @@ export const fetchResume = (id) => async dispatch => {
   const url = config.databaseURL + `resumes/${id}/` + config.auth;
   return axios.get(url)
   .then(data => {
+    console.log(data.data)
     if(!data) {
       dispatch(fetchNotFound(true))
     } else {

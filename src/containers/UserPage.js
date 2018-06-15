@@ -20,7 +20,7 @@ class UserPage extends Component {
       return (
         <div className="resumeCard col" key={id}>
           <div className="cardHeader">
-            <DropdownMenu />
+            <DropdownMenu id={id} />
             <h3>{resumes.resumeName}</h3>
           </div>
           <img className='demo' />
@@ -36,7 +36,7 @@ class UserPage extends Component {
     }
     return(
       <div className='builderCss'>
-        <Header />
+        <Header type='logout' />
         <div id="welcome">
           <h2 className="fontsforweb_bignoodletitling center white">Hello {this.props.authenticated.displayName}!</h2>
           <div className="container">

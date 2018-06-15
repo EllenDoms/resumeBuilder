@@ -104,6 +104,7 @@ form .saveBtn {
 form #formContent .tabs {
   width: 200px;
   float: left;
+  margin-top: 28px;
 }
 form #formContent .tabs li {
   margin-bottom: 20px;

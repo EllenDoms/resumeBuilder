@@ -18,15 +18,15 @@ export const LongField = ({ input, label, type, className, meta: { touched, erro
   </div>
 )
 
-export const Timeline = ({fields, label, meta: { touched, error, submitFailed }}) => (
+export const Timeline = ({fields, label, parentMethod, meta: { touched, error, submitFailed }}) => (
     <ul className='timeline'>
       {(touched || submitFailed) && error && <span className="error">{error}</span>}
       {fields.map((item, index) =>
         <li key={index} className='addItem'>
-          <Field label={label[0]} name={`${item}.title`} type="text" component={ShortField} className='half left' />
-          <Field label={label[1]} name={`${item}.where`} type="text" component={ShortField} className='half right' />
-          <Field label={label[2]} name={`${item}.timefrom`} type="text" component={ShortField} className='half left' />
-          <Field label={label[3]} name={`${item}.timeto`} type="text" component={ShortField} className='half right' />
+          <Field onBlur={parentMethod} label={label[0]} name={`${item}.title`} type="text" component={ShortField} className='half left' />
+          <Field onBlur={parentMethod} label={label[1]} name={`${item}.where`} type="text" component={ShortField} className='half right' />
+          <Field onBlur={parentMethod} label={label[2]} name={`${item}.timefrom`} type="text" component={ShortField} className='half left' />
+          <Field onBlur={parentMethod} label={label[3]} name={`${item}.timeto`} type="text" component={ShortField} className='half right' />
           <button type="button"  onClick={() => fields.remove(index)}>
             <span className='floatingBtn material-icons'>remove</span>
             <span className='btnLabel'>Remove</span>
@@ -42,12 +42,12 @@ export const Timeline = ({fields, label, meta: { touched, error, submitFailed }}
     </ul>
 )
 
-export const MultiField = ({fields, label, meta: { touched, error, submitFailed }}) => (
+export const MultiField = ({fields, label, parentMethod, meta: { touched, error, submitFailed }}) => (
   <ul className='timeline'>
     {(touched || submitFailed) && error && <span className="error">{error}</span>}
     {fields.map((item, index) =>
       <li key={index}>
-        <Field label={label} name={item} type="text" component={ShortField} />
+        <Field onBlur={parentMethod} label={label} name={item} type="text" component={ShortField} />
       </li>
     )}
     <li>
@@ -59,12 +59,12 @@ export const MultiField = ({fields, label, meta: { touched, error, submitFailed 
   </ul>
 )
 
-export const ParagraphFields = ({fields, label, meta: { touched, error, submitFailed }}) => (
+export const ParagraphFields = ({fields, label, parentMethod, meta: { touched, error, submitFailed }}) => (
   <ul className='timeline'>
     {(touched || submitFailed) && error && <span className="error">{error}</span>}
     {fields.map((item, index) =>
       <li key={index}>
-        <Field label={label} name={`intro.content[${index}]`} type="text" component={LongField} />
+        <Field onBlur={parentMethod} label={label} name={`intro.content[${index}]`} type="text" component={LongField} />
       </li>
     )}
     <li>
@@ -76,13 +76,13 @@ export const ParagraphFields = ({fields, label, meta: { touched, error, submitFa
   </ul>
 )
 
-export const ProgressBar = ({fields, label, meta: { touched, error, submitFailed }}) => (
+export const ProgressBar = ({fields, label, parentMethod, meta: { touched, error, submitFailed }}) => (
   <ul className='progressbar'>
     {(touched || submitFailed) && error && <span className="error">{error}</span>}
     {fields.map((item, index) =>
       <li key={index} className='addItem'>
-        <Field label={label[0]} name={`${item}.title`} type="text" component={ShortField} className='half left' />
-        <Field label={label[1]} name={`${item}.rating`} type="number" component={ShortField} className='half right' />
+        <Field onBlur={parentMethod} label={label[0]} name={`${item}.title`} type="text" component={ShortField} className='half left' />
+        <Field onBlur={parentMethod} label={label[1]} name={`${item}.rating`} type="number" component={ShortField} className='half right' />
         <button type="button"  onClick={() => fields.remove(index)}>
           <span className='floatingBtn material-icons'>remove</span>
           <span className='btnLabel'>Remove</span>
@@ -98,10 +98,10 @@ export const ProgressBar = ({fields, label, meta: { touched, error, submitFailed
   </ul>
 )
 
-export const Tooltip = ({fields, label}) => (
+export const Tooltip = ({fields, label, parentMethod}) => (
   <div className='addItem'>
     <h4>Tooltip</h4>
-    <Field label='Title' name={`tooltips.${fields.name}.title`} type="text" component={ShortField} />
-    <Field label='Description' name={`tooltips.${fields.name}.description`} type="text" component={LongField} />
+    <Field onBlur={parentMethod} label='Title' name={`tooltips.${fields.name}.title`} type="text" component={ShortField} />
+    <Field onBlur={parentMethod} label='Description' name={`tooltips.${fields.name}.description`} type="text" component={LongField} />
   </div>
 );

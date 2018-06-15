@@ -27,6 +27,7 @@ class ResumeNew extends Component {
     return _.map(tabs, tab => {
       return (
         <li
+          key={tab}
           onClick={() => {this.props.setActiveFormtab(tab)}}
           className={this.props.formtab == tab ? "active" : ""}
         >{tab}</li>
@@ -41,11 +42,10 @@ class ResumeNew extends Component {
     if (loading) {
       return <Loading />;
     }
-    console.log(formtab)
 
     return(
       <div className='builderCss'>
-        <Header />
+        <Header type='close' />
         <div id="pageContent">
           <form className="container">
             <Field onBlur={handleSubmit(this.saveField)} name='resumeName' component={ShortField} className='inline' type='text' />
@@ -75,49 +75,49 @@ class ResumeNew extends Component {
                   <h3>Intro</h3>
                   <div className="container">
                     <Field onBlur={handleSubmit(this.saveField)} name='intro.title' label='Title *' component={ShortField} />
-                    <FieldArray label='' name='intro.content' component={ParagraphFields} /> {/* more than one, max 5. Characters 400 - 800 */}
+                    <FieldArray parentMethod={handleSubmit(this.saveField)} label='' name='intro.content' component={ParagraphFields} /> {/* more than one, max 5. Characters 400 - 800 */}
                   </div>
                 </div>
                 <div id="tabExperience" className={formtab == 'Experience' ? "visible" : "hidden" }>
                   <h3>Experience</h3>
                   <div className="container">
-                    <FieldArray label={[ 'Job title', 'Company', 'From', 'Until' ]} name='experience' component={Timeline}/> {/* more than one, together with education max 6 */}
-                    <FieldArray label={['Title', 'Description']} name='experience' component={Tooltip} />
+                    <FieldArray parentMethod={handleSubmit(this.saveField)} label={[ 'Job title', 'Company', 'From', 'Until' ]} name='experience' component={Timeline}/> {/* more than one, together with education max 6 */}
+                    <FieldArray parentMethod={handleSubmit(this.saveField)} label={['Title', 'Description']} name='experience' component={Tooltip} />
                   </div>
                 </div>
                 <div id="tabEducation" className={formtab == 'Education' ? "visible" : "hidden" }>
                   <h3>Education</h3>
                   <div className="container">
-                    <FieldArray label={[ 'Title', 'Degree', 'From', 'Until' ]} name='education' component={Timeline}/> {/* more than one, together with education max 6 */}
-                    <FieldArray label={['Title', 'Description']} name='education' component={Tooltip} />
+                    <FieldArray parentMethod={handleSubmit(this.saveField)} label={[ 'Title', 'Degree', 'From', 'Until' ]} name='education' component={Timeline}/> {/* more than one, together with education max 6 */}
+                    <FieldArray parentMethod={handleSubmit(this.saveField)} label={['Title', 'Description']} name='education' component={Tooltip} />
                   </div>
                 </div>
                 <div id="tabExpertise" className={formtab == 'Expertise' ? "visible" : "hidden" }>
                   <h3>Expertise</h3>
                   <div className="container">
-                    <FieldArray label={['Title', 'Rating (%)']} name='expertise' component={ProgressBar} /> {/* more than one, skill/2 + expertise less than 11 */}
-                    <FieldArray label={['Title', 'Description']} name='expertise' component={Tooltip} />
+                    <FieldArray parentMethod={handleSubmit(this.saveField)} label={['Title', 'Rating (%)']} name='expertise' component={ProgressBar} /> {/* more than one, skill/2 + expertise less than 11 */}
+                    <FieldArray parentMethod={handleSubmit(this.saveField)} label={['Title', 'Description']} name='expertise' component={Tooltip} />
                   </div>
                 </div>
                 <div id="tabSkills" className={formtab == 'Skills' ? "visible" : "hidden" }>
                   <h3>Skills</h3>
                   <div className="container">
-                    <FieldArray label='' name='skills' component={MultiField} />{/* more than one, skill/2 + expertise less than 11 */}
-                    <FieldArray label={['Title', 'Description']} name='skills' component={Tooltip} />
+                    <FieldArray parentMethod={handleSubmit(this.saveField)} label='' name='skills' component={MultiField} />{/* more than one, skill/2 + expertise less than 11 */}
+                    <FieldArray parentMethod={handleSubmit(this.saveField)} label={['Title', 'Description']} name='skills' component={Tooltip} />
                   </div>
                 </div>
                 <div id="tabPersonality" className={formtab == 'Personality' ? "visible" : "hidden" }>
                   <h3>Personality</h3>
                   <div className="container">
-                    <FieldArray label='' name='personality' component={MultiField} /> {/* more than one */}
-                    <FieldArray label={['Title', 'Description']} name='personality' component={Tooltip} />
+                    <FieldArray parentMethod={handleSubmit(this.saveField)} label='' name='personality' component={MultiField} /> {/* more than one */}
+                    <FieldArray parentMethod={handleSubmit(this.saveField)} label={['Title', 'Description']} name='personality' component={Tooltip} />
                   </div>
                 </div>
                 <div id="tabPassions" className={formtab == 'Passions' ? "visible" : "hidden" }>
                   <h3>Passions</h3>
                   <div className="container">
-                    <FieldArray label='' name='passions' component={MultiField} /> {/* more than one */}
-                    <FieldArray label={['Title', 'Description']} name='passions' component={Tooltip} />
+                    <FieldArray parentMethod={handleSubmit(this.saveField)} label='' name='passions' component={MultiField} /> {/* more than one */}
+                    <FieldArray parentMethod={handleSubmit(this.saveField)} label={['Title', 'Description']} name='passions' component={Tooltip} />
                   </div>
                 </div>
               </div>

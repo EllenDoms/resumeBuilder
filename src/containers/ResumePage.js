@@ -20,7 +20,7 @@ class Cv extends Component {
   render() {
     const { data, loading, notFound } = this.props;
     console.log(data)
-    if (loading) {
+    if (loading || !data.information) {
       return <Loading />;
     }
     if (notFound) {

@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'; //navigate in app
+
 import './dropdownMenu.css';
 
 export default class Card extends Component {
@@ -13,11 +15,12 @@ export default class Card extends Component {
     });
   }
   closeMenu = event => {
-    if (!this.dropdownMenu.contains(event.target)) {
+    if (this.dropdownMenu != null && !this.dropdownMenu.contains(event.target)) {
       this.setState({ showMenu: false }, () => {
         document.removeEventListener('click', this.closeMenu);
       });
     }
+
   }
   render() {
     return (
@@ -35,7 +38,7 @@ export default class Card extends Component {
                     this.dropdownMenu = element;
                 }}
               >
-                <button className="item"> View resume </button>
+                <Link to={`resume/${this.props.id}`} className="item"> View resume </Link>
                 <button className="item"> Duplicate resume </button>
                 <button className="item"> Delete resume </button>
               </div>
