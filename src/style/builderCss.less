@@ -34,7 +34,7 @@ out:  builderCss.css
   h3 {
     font-size: 16px;
     color: @primarydark;
-    letter-spacing: 1;
+    font-weight: normal;
   }
   h4 {
     font-family: BigNoodleTitling;
@@ -73,10 +73,14 @@ out:  builderCss.css
     }
   }
   #pageContent {
-    min-height: ~"calc(100vh - 193px)";
+    min-height: ~"calc(100vh - 108px)";
     background-color: @greylightest;
     z-index: 0;
     padding-top: 40px;
+    overflow: hidden;
+    &.pageHeader {
+      min-height: ~"calc(100vh - 193px)";
+    }
     #newCard {
       background: #FFFFFF;
       border: 1px dashed @greyborder;

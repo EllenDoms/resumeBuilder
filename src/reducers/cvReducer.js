@@ -1,9 +1,11 @@
-import { FETCH_SUCCESS1, FETCH_SUCCESSOWN, FETCH_LOADING, FETCH_NOTFOUND } from '../actions/types';
+import { FETCH_SUCCESS, FETCH_LOADING, FETCH_NOTFOUND, SET_RESUME_ACTIVE, SET_FORMTAB_ACTIVE } from '../actions/types';
 
 const initialState = {
-  resumes: '',
+  active: '',
+  resumes: {},
   loading: true,
-  notFound: ''
+  notFound: '',
+  formtab: 'Template'
 };
 
 export default function CvReducer (state = initialState, action) {
@@ -20,21 +22,25 @@ export default function CvReducer (state = initialState, action) {
         loading: false,
         notFound: true
       }
-    case FETCH_SUCCESS1:
+    case FETCH_SUCCESS:
       // return default json
       return {
         ...state,
-        id: action.payload.id,
-        current: action.payload.current,
+        resumes: action.payload,
         loading: false
       };
-      case FETCH_SUCCESSOWN:
-        // return default json
-        return {
-          ...state,
-          resumes: action.payload,
-          loading: false
-        };
+    case SET_RESUME_ACTIVE:
+      // return default json
+      return {
+        ...state,
+        active: action.payload,
+      };
+    case SET_FORMTAB_ACTIVE:
+      // return default json
+      return {
+        ...state,
+        formtab: action.payload,
+      };
     default:
       return state;
   }

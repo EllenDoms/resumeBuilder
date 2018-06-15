@@ -1,28 +1,8 @@
-import { FETCH_USER, FETCH_LOADING, FETCH_NOTFOUND, FETCH_SUCCESS1, FETCH_SUCCESSOWN, SET_CURRENT, POST_RESUME } from './types';
+import { FETCH_USER, FETCH_LOADING, FETCH_NOTFOUND, FETCH_SUCCESS, SET_RESUME_ACTIVE, SET_FORMTAB_ACTIVE,POST_RESUME } from './types';
 import { config, authRef, databaseRef, provider } from "../config/firebase";
 import * as firebase from "firebase";
 
 import axios from 'axios';
-
-function fetchSuccess1(bool, current, id) {
-  console.log('fetch one')
-  return {
-      type: FETCH_SUCCESS1,
-      loading: bool,
-      payload : {
-        current,
-        id
-      }
-  };
-}
-function fetchSuccessOwn(bool, resumes) {
-  console.log("fetch own")
-  return {
-      type: FETCH_SUCCESSOWN,
-      loading: bool,
-      payload: resumes
-  };
-}
 
 function fetchLoading(bool, data) {
   return {
@@ -36,6 +16,29 @@ function fetchNotFound(bool) {
       type: FETCH_NOTFOUND,
       notFound: bool,
   };
+}
+
+function fetchSuccess(bool, resumes) {
+  return {
+      type: FETCH_SUCCESS,
+      loading: bool,
+      payload : resumes
+  }
+}
+
+export function setActiveResume(bool, id) {
+  return {
+    type: SET_RESUME_ACTIVE,
+    loading: bool,
+    payload: id
+  }
+}
+
+export function setActiveFormtab(tab) {
+  return {
+    type: SET_FORMTAB_ACTIVE,
+    payload: tab
+  }
 }
 
 function checkData(data) {
@@ -64,28 +67,34 @@ function checkData(data) {
    }
 }
 
+export const fetchUserResumes = uid => async dispatch => {
+  databaseRef.orderByChild("user").equalTo(uid)
+  .once('value', snap => {
+    dispatch(fetchSuccess(false, snap.val() ));
+  })
+}
+
+export const postResumeValue = (values, id) => async dispatch => {
+  return firebase.database().ref(`resumes/${id}`).set(values)
+}
+
+
+/*** PUBLIC RESUME PAGE ***/
 export const fetchResume = (id) => async dispatch => {
   dispatch(fetchLoading(true))
   const url = config.databaseURL + `resumes/${id}/` + config.auth;
-  console.log(url);
   return axios.get(url)
   .then(data => {
-    console.log(data.data)
     if(!data) {
       dispatch(fetchNotFound(true))
     } else {
-      console.log(data.data)
-      dispatch(fetchSuccess1(false, data.data, id));
+      dispatch(fetchSuccess(false, data.data, id));
     }
   })
   .catch(error => console.log('BAD', error))
 }
 
-export const postResumeValue = (values, id) => async dispatch => {
-  console.log(values)
-  return firebase.database().ref(`resumes/${id}`).set(values)
-}
-
+/*** AUTHENTICATION ***/
 export const fetchUser = () => dispatch => {
   authRef.onAuthStateChanged(user => {
     if (user) {
@@ -101,14 +110,6 @@ export const fetchUser = () => dispatch => {
     }
   })
 };
-
-export const fetchResumes = uid => async dispatch => {
-  console.log('fetchResumes')
-  databaseRef.orderByChild("user").equalTo(uid)
-  .on('value', snap => {
-    dispatch(fetchSuccessOwn(false, snap.val() ));
-  })
-}
 
 export const signIn = () => dispatch => {
   authRef

@@ -2,13 +2,6 @@ import React from 'react';
 import { Field } from 'redux-form';
 import '../style/form.css';
 
-export const InlineField = ({ input, label, type, className, meta: { touched, error, submitFailed } }) => (
-  <div className={`${className} ${(touched || submitFailed) && error ? 'has-danger' : ''} `} >
-    {(touched || submitFailed) && error && <span className="error">{error}</span>}
-    <input  {...input} type={type} />
-  </div>
-)
-
 export const ShortField = ({ input, label, type, className, meta: { touched, error, submitFailed } }) => (
   <div className={`${className} ${(touched || submitFailed) && error ? 'has-danger' : ''} `} >
     <label>{label}</label>
@@ -107,7 +100,7 @@ export const ProgressBar = ({fields, label, meta: { touched, error, submitFailed
 
 export const Tooltip = ({fields, label}) => (
   <div className='addItem'>
-    <h3>Tooltip</h3>
+    <h4>Tooltip</h4>
     <Field label='Title' name={`tooltips.${fields.name}.title`} type="text" component={ShortField} />
     <Field label='Description' name={`tooltips.${fields.name}.description`} type="text" component={LongField} />
   </div>

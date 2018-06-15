@@ -184,7 +184,8 @@ class Cv extends Component {
 function mapStateToProps(state) {
   console.log(state);
   return {
-    data: state.data.resume,
+    id: state.data.id,
+    data: state.data.resumes,
     loading: state.data.loading,
     notFound: state.data.notFound
   };

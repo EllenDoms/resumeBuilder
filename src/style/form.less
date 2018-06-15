@@ -2,10 +2,19 @@ out:  form.css
 
 @bigscreen: ~"only screen and (min-width: 600px)";
 @smallscreen: ~"only screen and (max-width: 600px)";
-@primary : #FCC1A7;
-@secondary : #495359;
-@grey: #EBECF0;
-@greyLight: #F7F7F7;
+
+@primary : #00BA95;
+@primarydark: #122E48;
+@secondary : #00919F;
+@grey: #999FA3;
+@greylightest: #F9FAFB;
+@greylight: #EAF1F2;
+@greyborder: #E3E7EB;
+@greytext: #6D7A82;
+@greydark: #272B2D;
+@gradient: linear-gradient(135deg, #00BA95 0%, #00919F 100%);
+@boxShadow: 0 0 7px 0 rgba(0,0,0,0.08);
+@errorbad: #D15A3C;
 
 h1 {
   font-size: 30px;
@@ -13,14 +22,25 @@ h1 {
 }
 
 form {
-  padding: 50px 20%;
-  h2 {
-    border-top: @grey 1px solid;
-    margin-top: 20px;
-    padding-top: 20px;
+  .inline input {
+    font-family: BigNoodleTitling;
+    font-size: 50px;
+    color: @primarydark;
     margin-bottom: 15px;
+    letter-spacing: 4px;
+    background: none;
+    border: none;
+    padding: 0;
+    &:focus {
+      outline: none;
+      border: none;
+    }
   }
-  h3 {margin-bottom: 5px;}
+  h3 {
+    margin-bottom: 5px;
+    border-bottom: 1px solid @greyborder;
+    padding: 25px 6%;
+  }
   .half {
     width: 48%;
     float: left;
@@ -30,14 +50,14 @@ form {
   }
   .whole { width: 100%; }
   .addItem{
-    background-color: @greyLight;
-    border: 1px solid  @grey;
+    background-color: @greylightest;
+    border: 1px solid  @greylight;
     overflow: hidden;
     padding: 20px;
     margin-top: 10px;
   }
   .error {
-    color: @primary;
+    color: @errorbad;
     display: inline-block;
     padding: 5px 0px 0px;
     font-size: 12px;
@@ -47,7 +67,7 @@ form {
       float: right;
     }
     input, textarea, .rw-drowpdown-list {
-      border: solid 1px @primary;
+      border: solid 1px @errorbad;
     }
   }
 
@@ -62,7 +82,7 @@ form {
     width: ~"calc(100% - 20px)";
     background-color: #FFF;
     border-radius: 3px;
-    border: 1px solid @grey;
+    border: 1px solid @greyborder;
     &:focus {
       border: solid 1px purple;
     }
@@ -91,5 +111,28 @@ form {
     color: #fff;
     margin: 20px 0px;
     float: right;
+  }
+  #formContent {
+    .tabs {
+      width: 200px;
+      float: left;
+      li {
+        margin-bottom: 20px;
+        color: @greytext;
+        font-size: 14px;
+        &:hover { cursor: pointer; color: @greydark; }
+        &.active { color: @greydark; }
+      }
+    }
+    .rightContent {
+      background: #FFFFFF;
+      border: 1px solid #F3F5F6;
+      box-shadow: @boxShadow;
+      border-radius: 2px;
+      border: 1px solid @greyborder;
+      float: right;
+      width: ~"calc(100% - 262px)";
+      padding-bottom: 30px;
+    }
   }
 }

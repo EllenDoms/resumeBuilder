@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
 import { Link } from 'react-router-dom'; //navigate in app
-import { fetchResumes } from '../actions';
+import { fetchUserResumes } from '../actions';
 import { connect } from 'react-redux';
 
 
@@ -13,9 +13,7 @@ import Loading from '../components/loading';
 class UserPage extends Component {
   componentWillMount() {
     const { authenticated } = this.props;
-    console.log('call fetchResumes')
-    this.props.fetchResumes(authenticated.uid);
-    console.log('userpage')
+    this.props.fetchUserResumes(authenticated.uid);
   }
   renderResumes() {
     return _.map(this.props.resumes, (resumes, id) => {
@@ -45,7 +43,7 @@ class UserPage extends Component {
             <div className="appQuote"><p>Did you know that the average time spent by recruiters looking at a resume is only 5 to 7 seconds?</p></div>
           </div>
         </div>
-        <div id="pageContent">
+        <div id="pageContent" className='longHeader'>
           <div className="container flex-grid">
             <div id="newCard" className="col">
               Add new Resume!
@@ -58,12 +56,12 @@ class UserPage extends Component {
   }
 }
 
-function mapStateToProps({data}) {
-  console.log(data)
+function mapStateToProps(state) {
+  console.log(state)
   return {
-    resumes: data.resumes,
-    loading: data.loading
+    resumes: state.data.resumes,
+    loading: state.data.loading
   };
 }
 
-export default connect( mapStateToProps, { fetchResumes } )(UserPage);
+export default connect( mapStateToProps, { fetchUserResumes } )(UserPage);
