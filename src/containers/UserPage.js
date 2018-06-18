@@ -21,7 +21,7 @@ class UserPage extends Component {
         <div className="resumeCard col" key={id}>
           <div className="cardHeader">
             <DropdownMenu id={id} />
-            <h3>{resumes.resumeName}</h3>
+            <h3>{resumes.name}</h3>
           </div>
           <img className='demo' />
           <Link to={{ pathname: '/new', id: id }} className='btn btn-primary'>Edit resume</Link>
@@ -46,8 +46,11 @@ class UserPage extends Component {
         <div id="pageContent" className='longHeader'>
           <div className="container flex-grid">
             <div id="newCard" className="col">
-              Add new Resume!
+              <Link to={{ pathname: '/new', id: "new" }}>
+                Add new Resume!
+              </Link>
             </div>
+            
             {this.renderResumes()}
           </div>
         </div>

@@ -36,7 +36,6 @@ const validate = values => { //validate function will automatically be called by
           if (paragraph) { characters = characters + paragraph.length}
           return characters;
         });
-        console.log(characters);
         if(characters > 800) { errors.intro.content = { [0]: `Add a description between 400 and 800 characters. (${characters})` }}
         else if(characters < 400) { errors.intro.content = { [0]: `Add a description between 400 and 800 characters. (${characters})` }};
     }
@@ -149,9 +148,6 @@ const validate = values => { //validate function will automatically be called by
   else if(values.personality.length > 10) {errors.personality = {_error: "Enter 10 items maximum"}};
   if(!values.passions || !values.passions.length) { errors.passions = {_error: "Add at least one passion."}}
   else if(values.passions.length > 10) {errors.passions = "Enter 10 items maximum"};
-
-  console.log(values);
-  console.log(errors);
 
   return errors;
 }

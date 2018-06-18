@@ -1,4 +1,4 @@
-import { FETCH_USER, FETCH_LOADING, FETCH_NOTFOUND, FETCH_SUCCESS, SET_RESUME_ACTIVE, SET_FORMTAB_ACTIVE,POST_RESUME } from './types';
+import { FETCH_USER, FETCH_LOADING, FETCH_NOTFOUND, FETCH_SUCCESS, SET_RESUME_ACTIVE, ADD_NEW_RESUME, SET_FORMTAB_ACTIVE } from './types';
 import { config, authRef, databaseRef, provider } from "../config/firebase";
 import * as firebase from "firebase";
 
@@ -26,11 +26,11 @@ function fetchSuccess(bool, resumes) {
   }
 }
 
-export function setActiveResume(bool, id) {
+export function setActiveResume(bool, key) {
   return {
     type: SET_RESUME_ACTIVE,
     loading: bool,
-    payload: id
+    payload: key
   }
 }
 
@@ -41,32 +41,6 @@ export function setActiveFormtab(tab) {
   }
 }
 
-function checkData(data) {
-  //count characters in paragraph
-  let characters = 0;
-  data.intro.content.map(paragraph => { return characters = characters + paragraph.length });
-  //check if input is ok
-  return true;
-   if (
-     //min one entry everywhere
-     data.experience.length > 0 && data.education.length > 0 && data.skills.length > 0 && data.expertise.length > 0 && data.intro.title.length > 0 && data.intro.content.length > 0 && data.personality.length > 0 && data.passions.length > 0 &&
-     // max timeline
-     data.experience.length + data.education.length < 7 &&
-     // amount of characters for intro text
-     characters < 801 && characters > 449 &&
-     // max skills + Expertise
-     data.skills.length/2 + data.expertise.length < 11 &&
-     // max why paragraph
-     data.intro.content.length < 5 &&
-     // max personality and Passions
-     data.personality.length < 10 && data.passions.length < 11
-   ){
-     return true;
-   } else {
-     return false;
-   }
-}
-
 export const fetchUserResumes = uid => async dispatch => {
   databaseRef.orderByChild("user").equalTo(uid)
   .once('value', snap => {
@@ -74,23 +48,40 @@ export const fetchUserResumes = uid => async dispatch => {
   })
 }
 
-export const postResumeValue = (values, id) => async dispatch => {
+export const newResume = (bool, values) => async dispatch => {
+  console.log(values)
+  return firebase.database()
+    .ref('resumes/').push(values)
+    .then((snap) => {
+      console.log(snap)
+      let key = snap.key;
+      let resume =
+     dispatch({
+       type: ADD_NEW_RESUME,
+       loading: bool,
+       key: key,
+       resume: values
+     })
+   })
+}
+
+export const postResumeValue = (values, key) => async dispatch => {
   console.log('posting resume')
-  return firebase.database().ref(`resumes/${id}`).set(values)
+  return firebase.database().ref(`resumes/${key}`).set(values)
 }
 
 
 /*** PUBLIC RESUME PAGE ***/
-export const fetchResume = (id) => async dispatch => {
+export const fetchResume = (key) => async dispatch => {
   dispatch(fetchLoading(true))
-  const url = config.databaseURL + `resumes/${id}/` + config.auth;
+  const url = config.databaseURL + `resumes/${key}/` + config.auth;
   return axios.get(url)
   .then(data => {
     console.log(data.data)
     if(!data) {
       dispatch(fetchNotFound(true))
     } else {
-      dispatch(fetchSuccess(false, data.data, id));
+      dispatch(fetchSuccess(false, data.data, key));
     }
   })
   .catch(error => console.log('BAD', error))

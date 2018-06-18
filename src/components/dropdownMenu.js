@@ -39,8 +39,8 @@ export default class Card extends Component {
                 }}
               >
                 <Link to={`resume/${this.props.id}`} className="item"> View resume </Link>
-                <button className="item"> Duplicate resume </button>
-                <button className="item"> Delete resume </button>
+                <a className="item"> Duplicate resume </a>
+                <a className="item"> Delete resume </a>
               </div>
             )
             : (

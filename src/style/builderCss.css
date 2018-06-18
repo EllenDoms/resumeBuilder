@@ -87,6 +87,15 @@
   line-height: 280px;
   height: 280px;
   text-align: center;
+  transition: all 0.2s ease-out;
+}
+.builderCss #pageContent #newCard a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.builderCss #pageContent #newCard:hover {
+  box-shadow: 0 2px 9px 0 rgba(0, 0, 0, 0.4);
 }
 .builderCss #pageContent .resumeCard {
   background: #FFFFFF;
@@ -145,6 +154,7 @@
 .builderCss #header.landing {
   height: 38px;
   padding-top: 30px;
+  border: none;
 }
 .builderCss #header.landing li a {
   color: #FFF;

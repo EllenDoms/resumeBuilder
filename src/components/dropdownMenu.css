@@ -32,9 +32,12 @@
 .dropdownMenu .item {
   border: none;
   padding: 10px;
-  display: block;
-  width: 100%;
+  display: flex;
   text-align: left;
+  font-size: 12px;
+  line-height: 12Px;
+  background: #FFF;
+  z-index: 9;
 }
 
 .dropdownMenu .item:focus {
