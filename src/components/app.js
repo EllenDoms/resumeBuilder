@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import promise from 'redux-promise';
 import reduxThunk from 'redux-thunk';
-import { BrowserRouter, Route, Switch} from 'react-router-dom';
+import { HashRouter, Route, Switch} from 'react-router-dom';
 import { fetchUser } from "../actions";
 import { connect } from "react-redux";
 
@@ -31,7 +31,7 @@ export class App extends Component {
   render() {
 
     return (
-      <BrowserRouter basename='/projects/resume-builder/'>
+      <HashRouter>
         <div id='page'>
           <Switch>
             <Route exact path="/" component={LandingsPage} />
@@ -42,7 +42,7 @@ export class App extends Component {
             <Route path="/resume/:id" component={ResumePage} />
           </Switch>
         </div>
-      </BrowserRouter>
+      </HashRouter>
     )
   }
 }
