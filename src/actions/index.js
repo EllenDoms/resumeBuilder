@@ -1,4 +1,4 @@
-import { FETCH_USER, FETCH_LOADING, FETCH_NOTFOUND, FETCH_SUCCESS, SET_RESUME_ACTIVE, ADD_NEW_RESUME, SET_FORMTAB_ACTIVE } from './types';
+import { FETCH_USER, FETCH_LOADING, FETCH_NOTFOUND, FETCH_SUCCESS, SET_RESUME_ACTIVE, ADD_NEW_RESUME, DELETE_RESUME, SET_FORMTAB_ACTIVE } from './types';
 import { config, authRef, databaseRef, provider } from "../config/firebase";
 import * as firebase from "firebase";
 
@@ -49,13 +49,10 @@ export const fetchUserResumes = uid => async dispatch => {
 }
 
 export const newResume = (bool, values) => async dispatch => {
-  console.log(values)
-  return firebase.database()
-    .ref('resumes/').push(values)
+  return firebase.database().ref('resumes/').push(values)
     .then((snap) => {
       console.log(snap)
       let key = snap.key;
-      let resume =
      dispatch({
        type: ADD_NEW_RESUME,
        loading: bool,
@@ -65,8 +62,23 @@ export const newResume = (bool, values) => async dispatch => {
    })
 }
 
+export const deleteResume = key => async dispatch => {
+  console.log('Deleting resume');
+  // SOFT DELETE?!
+  // console.log(key)
+  // return firebase.database().ref('resumes/').child(key).remove()
+  //   .then((snap) => {
+  //     console.log(snap)
+  //     let key = snap.key;
+  //     dispatch({
+  //       type: DELETE_RESUME,
+  //       key: key
+  //     })
+  //   })
+}
+
 export const postResumeValue = (values, key) => async dispatch => {
-  console.log('posting resume')
+  console.log('Posting resume')
   return firebase.database().ref(`resumes/${key}`).set(values)
 }
 
@@ -113,13 +125,14 @@ export const signIn = () => dispatch => {
     });
 };
 
-// export const signOut = () => dispatch => {
-//   authRef
-//     .signOut()
-//     .then(() => {
-//       this.context.router.history.push("/");
-//     })
-//     .catch(error => {
-//       console.log(error);
-//     });
-// };
+export const signOut = () => dispatch => {
+  console.log('signOut')
+  authRef
+    .signOut()
+    .then(() => {
+      this.context.router.history.push("/");
+    })
+    .catch(error => {
+      console.log(error);
+    });
+};

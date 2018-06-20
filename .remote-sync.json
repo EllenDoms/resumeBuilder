@@ -8,7 +8,7 @@
   "deleteLocal": false,
   "hostname": "ftp.ellendoms.com",
   "port": "21",
-  "target": "/resume-builder",
+  "target": "/projects/resume-builder",
   "source": "/build",
   "ignore": [
     ".remote-sync.json",

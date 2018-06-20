@@ -164,9 +164,9 @@ class Cv extends Component {
                   <p>{data.information.telephone}</p>
                 </div>
                 <div className='columnRight'>
-                  <a href={'http://www.' + data.information.linkedin}><p><span className="fa fa-linkedin-square" />{data.information.linkedin}</p></a>
-                  <a href={'http://www.' + data.information.dribbble}><p><span className="fa fa-dribbble" />{data.information.dribbble}</p></a>
-                  <a href={'http://www.' + data.information.github}><p><span className="fa fa-github" />{data.information.github}</p></a>
+                  <a href={'http://www.' + data.information.linkedin} target="_blank"><p><span className="fa fa-linkedin-square" />{data.information.linkedin}</p></a>
+                  <a href={'http://www.' + data.information.dribbble} target="_blank"><p><span className="fa fa-dribbble" />{data.information.dribbble}</p></a>
+                  <a href={'http://www.' + data.information.github} target="_blank"><p><span className="fa fa-github" />{data.information.github}</p></a>
                 </div>
               </div>
 

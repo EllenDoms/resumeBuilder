@@ -10,13 +10,15 @@ export default function(ComposedComponent) {
 
     componentWillMount() {
       if (this.props.authenticated === null) {
-        this.context.router.history.push("/new");
+        console.log('one')
+        this.context.router.history.push("/login");
       }
     }
 
     componentWillUpdate(nextProps) {
       if (!nextProps.authenticated) {
-        this.context.router.history.push("/login");
+        console.log('two')
+        this.context.router.history.push("/");
       }
     }
 

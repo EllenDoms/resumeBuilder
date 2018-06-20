@@ -31,7 +31,7 @@ export class App extends Component {
   render() {
 
     return (
-      <BrowserRouter basename='/resume-builder/'>
+      <BrowserRouter basename='/projects/resume-builder/'>
         <div id='page'>
           <Switch>
             <Route exact path="/" component={LandingsPage} />
