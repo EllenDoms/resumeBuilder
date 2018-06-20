@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
+import { connect } from "react-redux";
 import { Link } from 'react-router-dom'; //navigate in app
+import { signOut } from "../actions";
 
 import logo from '../img/logo2.png';
 
-export default class Header extends Component {
+class Header extends Component {
   renderNav(type) {
     switch(type) {
-      case 'logout':
+      case 'signOut':
         return (
           <ul className="rightNav">
-            <li><Link to={`/logout`}>Logout</Link></li>
+            <li><a onClick={() => {this.props.signOut()}}>Logout</a></li>
           </ul>
         )
       case 'close':
@@ -31,3 +33,5 @@ export default class Header extends Component {
     )
   }
 }
+
+export default connect(null, { signOut })(Header);

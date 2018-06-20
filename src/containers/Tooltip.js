@@ -9,7 +9,7 @@ export default class Tooltip extends React.Component {
   }
   projectLink(props) {
     if (this.props.mode.projectLink) {
-      return <a href= {this.props.mode.projectLink} className='bullet link material-icons'> keyboard_arrow_right</a>;
+      return <a href= {this.props.mode.projectLink} target="_blank" className='bullet link material-icons'> keyboard_arrow_right</a>;
     } else {
       return <div className='bullet' />;
     }

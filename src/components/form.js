@@ -13,7 +13,7 @@ export const ShortField = ({ input, label, type, className, meta: { touched, err
 export const LongField = ({ input, label, type, className, meta: { touched, error } }) => (
   <div className={`${className} ${touched && error ? 'has-danger' : ''} `} >
     <label>{label}</label>
-    {(touched && error) && <span className="error">{error}</span>}
+    {touched && error && <span className="error">{error}</span>}
     <textarea {...input} type={type} />
   </div>
 )
@@ -44,7 +44,7 @@ export const Timeline = ({fields, label, parentMethod, meta: { touched, error }}
 
 export const MultiField = ({fields, label, parentMethod, meta: { touched, error, submitFailed }}) => (
   <ul className='timeline'>
-    {(touched && error) && <span className="error">{error}</span>}
+    {touched && error && <span className="error">{error}</span>}
     {fields.map((item, index) =>
       <li key={index}>
         <Field onBlur={parentMethod} label={label} name={item} type="text" component={ShortField} />
@@ -61,7 +61,7 @@ export const MultiField = ({fields, label, parentMethod, meta: { touched, error,
 
 export const ParagraphFields = ({fields, label, parentMethod, meta: { touched, error }}) => (
   <ul className='timeline'>
-    {(touched && error) && <span className="error">{error}</span>}
+    {touched && error && <span className="error">{error}</span>}
     {fields.map((item, index) =>
       <li key={index}>
         <Field onBlur={parentMethod} label={label} name={`intro.content[${index}]`} type="text" component={LongField} />
@@ -78,7 +78,7 @@ export const ParagraphFields = ({fields, label, parentMethod, meta: { touched, e
 
 export const ProgressBar = ({fields, label, parentMethod, meta: { touched, error }}) => (
   <ul className='progressbar'>
-    {(touched && error) && <span className="error">{error}</span>}
+    {touched && error && <span className="error">{error}</span>}
     {fields.map((item, index) =>
       <li key={index} className='addItem'>
         <Field onBlur={parentMethod} label={label[0]} name={`${item}.title`} type="text" component={ShortField} className='half left' />

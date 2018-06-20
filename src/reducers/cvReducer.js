@@ -1,4 +1,5 @@
-import { FETCH_SUCCESS, FETCH_LOADING, FETCH_NOTFOUND, SET_RESUME_ACTIVE, ADD_NEW_RESUME, SET_FORMTAB_ACTIVE } from '../actions/types';
+import { FETCH_SUCCESS, FETCH_LOADING, FETCH_NOTFOUND, SET_RESUME_ACTIVE, ADD_NEW_RESUME, DELETE_RESUME, SET_FORMTAB_ACTIVE } from '../actions/types';
+import _ from 'lodash';
 
 const initialState = {
   active: '',
@@ -41,6 +42,12 @@ export default function CvReducer (state = initialState, action) {
           ...state,
           active: action.key,
           resumes: {...state.resumes, [action.key]: action.resume}
+        };
+      case DELETE_RESUME:
+        // return default json
+        return {
+          ...state,
+          resumes: _.omit('resumes', [action.key])
         };
     case SET_FORMTAB_ACTIVE:
       // return default json

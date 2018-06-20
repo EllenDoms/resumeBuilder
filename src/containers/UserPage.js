@@ -36,7 +36,7 @@ class UserPage extends Component {
     }
     return(
       <div className='builderCss'>
-        <Header type='logout' />
+        <Header type='signOut' />
         <div id="welcome">
           <h2 className="fontsforweb_bignoodletitling center white">Hello {this.props.authenticated.displayName}!</h2>
           <div className="container">
@@ -50,7 +50,7 @@ class UserPage extends Component {
                 Add new Resume!
               </Link>
             </div>
-            
+
             {this.renderResumes()}
           </div>
         </div>

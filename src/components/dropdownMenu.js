@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'; //navigate in app
+import { connect } from "react-redux";
+import { deleteResume } from "../actions";
 
 import './dropdownMenu.css';
 
-export default class Card extends Component {
+class Card extends Component {
   constructor() {
     super();
     this.state = { showMenu: false, }
@@ -20,7 +22,6 @@ export default class Card extends Component {
         document.removeEventListener('click', this.closeMenu);
       });
     }
-
   }
   render() {
     return (
@@ -32,15 +33,13 @@ export default class Card extends Component {
         {
           this.state.showMenu
             ? (
-              <div
-                className="menu"
-                ref={(element) => {
-                    this.dropdownMenu = element;
-                }}
+              <div className="menu" ref={(element) => {
+                this.dropdownMenu = element;
+              }}
               >
-                <Link to={`resume/${this.props.id}`} className="item"> View resume </Link>
-                <a className="item"> Duplicate resume </a>
-                <a className="item"> Delete resume </a>
+                <Link to={`resume/${this.props.id}`} target="_blank" className="item"> View resume </Link>
+                <a className="item"> Duplicate resume (WIP) </a>
+                <div onClick={() => {this.props.deleteResume(this.props.id)}} className="item"> Delete resume (WIP) </div>
               </div>
             )
             : (
@@ -51,3 +50,5 @@ export default class Card extends Component {
     );
   }
 }
+
+export default connect(null, { deleteResume })(Card);
