@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchUser, newResume, setActiveResume, setActiveFormtab, postResumeValue } from '../actions';
+import { fetchUser, fetchUserResumes, newResume, setActiveResume, setActiveFormtab, postResumeValue } from '../actions';
 import { Redirect } from 'react-router'
 
 import { Field, Fields, FieldArray, reduxForm } from 'redux-form';
@@ -13,10 +13,12 @@ import Loading from '../components/loading';
 
 class ResumeNew extends Component {
   componentWillMount() {
-    const { authenticated, location } = this.props;
-    if(location.id && location.id != "new") {
-      this.props.setActiveResume(false, location.id);
-    } else if(location.id == "new") {
+    const { authenticated, location, match } = this.props;
+    console.log(this.props)
+    this.props.fetchUserResumes(authenticated.uid);
+    if(match.params.id && match.params.id != "new") {
+      this.props.setActiveResume(false, match.params.id);
+    } else if(match.params.id == "new") {
       const values = {
         name: "New resume",
         user: authenticated.uid
@@ -46,9 +48,6 @@ class ResumeNew extends Component {
   }
   render() {
     const { loading, data, formtab, handleSubmit, formValues } = this.props;
-    if(!this.props.location.id) {
-      return <Redirect to='/user' />
-    }
     if (loading || !formValues) {
       return <Loading />;
     }
@@ -148,9 +147,9 @@ let InitializeFromStateForm = reduxForm({
 })(ResumeNew);
 
 function mapStateToProps(state) {
-  console.log(state.form.resumeNew)
+  console.log(state)
   return {
-    id: state.data.active,
+    id: state.data.id,
     formtab: state.data.formtab,
     loading: state.data.loading,
     initialValues: state.data.resumes[state.data.active],
@@ -158,4 +157,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect( mapStateToProps, { fetchUser, newResume, setActiveResume, setActiveFormtab, postResumeValue })(InitializeFromStateForm);
+export default connect( mapStateToProps, { fetchUser, fetchUserResumes, newResume, setActiveResume, setActiveFormtab, postResumeValue })(InitializeFromStateForm);

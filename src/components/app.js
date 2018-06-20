@@ -36,9 +36,9 @@ export class App extends Component {
           <Switch>
             <Route exact path="/" component={LandingsPage} />
             <Route exact path="/notFound" component={NotFound} />
-            <Route exact path="/user" component={requireAuth(UserPage)} />
-            <Route exact path="/new" component={requireAuth(ResumeFormPage)} />
             <Route exact path="/login" component={SignInPage} />
+            <Route exact path="/user" component={requireAuth(UserPage)} />
+            <Route path="/edit/:id" component={requireAuth(ResumeFormPage)} />
             <Route path="/resume/:id" component={ResumePage} />
           </Switch>
         </div>

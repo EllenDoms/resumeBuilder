@@ -51,7 +51,6 @@ export const fetchUserResumes = uid => async dispatch => {
 export const newResume = (bool, values) => async dispatch => {
   return firebase.database().ref('resumes/').push(values)
     .then((snap) => {
-      console.log(snap)
       let key = snap.key;
      dispatch({
        type: ADD_NEW_RESUME,
@@ -78,7 +77,6 @@ export const deleteResume = key => async dispatch => {
 }
 
 export const postResumeValue = (values, key) => async dispatch => {
-  console.log('Posting resume')
   return firebase.database().ref(`resumes/${key}`).set(values)
 }
 
@@ -89,7 +87,6 @@ export const fetchResume = (key) => async dispatch => {
   const url = config.databaseURL + `resumes/${key}/` + config.auth;
   return axios.get(url)
   .then(data => {
-    console.log(data.data)
     if(!data) {
       dispatch(fetchNotFound(true))
     } else {
@@ -126,7 +123,6 @@ export const signIn = () => dispatch => {
 };
 
 export const signOut = () => dispatch => {
-  console.log('signOut')
   authRef
     .signOut()
     .then(() => {

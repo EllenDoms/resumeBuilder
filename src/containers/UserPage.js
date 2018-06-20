@@ -12,6 +12,7 @@ import Loading from '../components/loading';
 
 class UserPage extends Component {
   componentWillMount() {
+    console.log(this.props.data);
     const { authenticated } = this.props;
     this.props.fetchUserResumes(authenticated.uid);
   }
@@ -24,7 +25,7 @@ class UserPage extends Component {
             <h3>{resumes.name}</h3>
           </div>
           <img className='demo' />
-          <Link to={{ pathname: '/new', id: id }} className='btn btn-primary'>Edit resume</Link>
+          <Link to={`/edit/${id}`} className='btn btn-primary'>Edit resume</Link>
         </div>
       )
     })
@@ -46,7 +47,7 @@ class UserPage extends Component {
         <div id="pageContent" className='longHeader'>
           <div className="container flex-grid">
             <div id="newCard" className="col">
-              <Link to={{ pathname: '/new', id: "new" }}>
+              <Link to={`/edit/new`}>
                 Add new Resume!
               </Link>
             </div>
