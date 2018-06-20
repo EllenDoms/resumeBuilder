@@ -19,7 +19,7 @@ export default class LandingsPage extends Component {
             <div id="header" className="landing">
               <img src={logo} alt='ResumeBuilder Logo' />
               <ul className="rightNav">
-                <li><Link to={`/user`}>Login/Signup</Link></li>
+                <li><Link to={`/user`}>Login</Link></li>
               </ul>
             </div>
             <div id="tagline">

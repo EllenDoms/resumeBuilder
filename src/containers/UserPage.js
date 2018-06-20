@@ -12,7 +12,6 @@ import Loading from '../components/loading';
 
 class UserPage extends Component {
   componentWillMount() {
-    console.log(this.props.data);
     const { authenticated } = this.props;
     this.props.fetchUserResumes(authenticated.uid);
   }

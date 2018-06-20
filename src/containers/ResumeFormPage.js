@@ -14,7 +14,6 @@ import Loading from '../components/loading';
 class ResumeNew extends Component {
   componentWillMount() {
     const { authenticated, location, match } = this.props;
-    console.log(this.props)
     this.props.fetchUserResumes(authenticated.uid);
     if(match.params.id && match.params.id != "new") {
       this.props.setActiveResume(false, match.params.id);
@@ -28,7 +27,7 @@ class ResumeNew extends Component {
   }
   saveField = (values) => {
     if(values.values) {
-      this.props.postResumeValue(values.values, this.props.location.id);
+      this.props.postResumeValue(values.values, this.props.id);
     } else {
       console.log('nothing')
     }
@@ -149,7 +148,7 @@ let InitializeFromStateForm = reduxForm({
 function mapStateToProps(state) {
   console.log(state)
   return {
-    id: state.data.id,
+    id: state.data.active,
     formtab: state.data.formtab,
     loading: state.data.loading,
     initialValues: state.data.resumes[state.data.active],

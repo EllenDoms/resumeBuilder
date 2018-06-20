@@ -44,7 +44,13 @@ export function setActiveFormtab(tab) {
 export const fetchUserResumes = uid => async dispatch => {
   databaseRef.orderByChild("user").equalTo(uid)
   .once('value', snap => {
-    dispatch(fetchSuccess(false, snap.val() ));
+    console.log(snap.val())
+    if(!snap.val()) {
+      dispatch(fetchSuccess(false, "" )); 
+    } else {
+      dispatch(fetchSuccess(false, snap.val() ));
+    }
+
   })
 }
 
@@ -116,7 +122,9 @@ export const fetchUser = () => dispatch => {
 export const signIn = () => dispatch => {
   authRef
     .signInWithPopup(provider)
-    .then(result => {})
+    .then(result => {
+      this.context.router.history.push("/user");
+    })
     .catch(error => {
       console.log(error);
     });
