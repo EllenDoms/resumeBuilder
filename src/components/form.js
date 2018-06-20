@@ -102,6 +102,7 @@ export const Tooltip = ({fields, label, parentMethod}) => (
   <div className='addItem'>
     <h4>Tooltip</h4>
     <Field onBlur={parentMethod} label='Title' name={`tooltips.${fields.name}.title`} type="text" component={ShortField} />
+    <Field onBlur={parentMethod} label='Link' name={`tooltips.${fields.name}.projectLink`} type="text" component={ShortField} />
     <Field onBlur={parentMethod} label='Description' name={`tooltips.${fields.name}.description`} type="text" component={LongField} />
   </div>
 );

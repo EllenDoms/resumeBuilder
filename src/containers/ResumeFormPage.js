@@ -93,42 +93,42 @@ class ResumeNew extends Component {
                   <h3>Experience</h3>
                   <div className="container">
                     <FieldArray parentMethod={this.saveField(formValues)} label={[ 'Job title', 'Company', 'From', 'Until' ]} name='experience' component={Timeline}/> {/* more than one, together with education max 6 */}
-                    <FieldArray parentMethod={this.saveField(formValues)} label={['Title', 'Description']} name='experience' component={Tooltip} />
+                    <FieldArray parentMethod={this.saveField(formValues)} label={['Title', 'Link', 'Description']} name='experience' component={Tooltip} />
                   </div>
                 </div>
                 <div id="tabEducation" className={formtab == 'Education' ? "visible" : "hidden" }>
                   <h3>Education</h3>
                   <div className="container">
                     <FieldArray parentMethod={this.saveField(formValues)} label={[ 'Title', 'Degree', 'From', 'Until' ]} name='education' component={Timeline}/> {/* more than one, together with education max 6 */}
-                    <FieldArray parentMethod={this.saveField(formValues)} label={['Title', 'Description']} name='education' component={Tooltip} />
+                    <FieldArray parentMethod={this.saveField(formValues)} label={['Title', 'Link', 'Description']} name='education' component={Tooltip} />
                   </div>
                 </div>
                 <div id="tabExpertise" className={formtab == 'Expertise' ? "visible" : "hidden" }>
                   <h3>Expertise</h3>
                   <div className="container">
                     <FieldArray parentMethod={this.saveField(formValues)} label={['Title', 'Rating (%)']} name='expertise' component={ProgressBar} /> {/* more than one, skill/2 + expertise less than 11 */}
-                    <FieldArray parentMethod={this.saveField(formValues)} label={['Title', 'Description']} name='expertise' component={Tooltip} />
+                    <FieldArray parentMethod={this.saveField(formValues)} label={['Title', 'Link', 'Description']} name='expertise' component={Tooltip} />
                   </div>
                 </div>
                 <div id="tabSkills" className={formtab == 'Skills' ? "visible" : "hidden" }>
                   <h3>Skills</h3>
                   <div className="container">
                     <FieldArray parentMethod={this.saveField(formValues)} label='' name='skills' component={MultiField} />{/* more than one, skill/2 + expertise less than 11 */}
-                    <FieldArray parentMethod={this.saveField(formValues)} label={['Title', 'Description']} name='skills' component={Tooltip} />
+                    <FieldArray parentMethod={this.saveField(formValues)} label={['Title', 'Link', 'Description']} name='skills' component={Tooltip} />
                   </div>
                 </div>
                 <div id="tabPersonality" className={formtab == 'Personality' ? "visible" : "hidden" }>
                   <h3>Personality</h3>
                   <div className="container">
                     <FieldArray parentMethod={this.saveField(formValues)} label='' name='personality' component={MultiField} /> {/* more than one */}
-                    <FieldArray parentMethod={this.saveField(formValues)} label={['Title', 'Description']} name='personality' component={Tooltip} />
+                    <FieldArray parentMethod={this.saveField(formValues)} label={['Title', 'Link', 'Description']} name='personality' component={Tooltip} />
                   </div>
                 </div>
                 <div id="tabPassions" className={formtab == 'Passions' ? "visible" : "hidden" }>
                   <h3>Passions</h3>
                   <div className="container">
                     <FieldArray parentMethod={this.saveField(formValues)} label='' name='passions' component={MultiField} /> {/* more than one */}
-                    <FieldArray parentMethod={this.saveField(formValues)} label={['Title', 'Description']} name='passions' component={Tooltip} />
+                    <FieldArray parentMethod={this.saveField(formValues)} label={['Title', 'Link', 'Description']} name='passions' component={Tooltip} />
                   </div>
                 </div>
               </div>
