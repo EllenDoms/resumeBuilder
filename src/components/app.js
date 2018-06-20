@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import promise from 'redux-promise';
 import reduxThunk from 'redux-thunk';
+import { browserHistory } from 'react-router';
 import { HashRouter, Route, Switch} from 'react-router-dom';
 import { fetchUser } from "../actions";
 import { connect } from "react-redux";
