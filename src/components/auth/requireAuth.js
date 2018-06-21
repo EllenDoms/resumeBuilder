@@ -6,28 +6,26 @@ export default function(ComposedComponent) {
   class Authentication extends Component {
     static contextTypes = {
       router: PropTypes.object
-    }
+    };
 
     componentWillMount() {
       if (this.props.authenticated === null) {
-        console.log('one')
+        console.log("Mount not authenticated")
         this.context.router.history.push("/login");
       }
     }
 
     componentWillUpdate(nextProps) {
       if (!nextProps.authenticated) {
-        console.log('two')
+        console.log("Logging out")
         this.context.router.history.push("/");
       }
     }
 
     render() {
       if (this.props.authenticated) {
-        return (<div>
-          <ComposedComponent {...this.props} />
-        </div> )
-
+        console.log("Render authenticated")
+        return <ComposedComponent {...this.props} />;
       }
       return null;
     }

@@ -1,6 +1,7 @@
 import { FETCH_USER, FETCH_LOADING, FETCH_NOTFOUND, FETCH_SUCCESS, SET_RESUME_ACTIVE, ADD_NEW_RESUME, DELETE_RESUME, SET_FORMTAB_ACTIVE } from './types';
 import { config, authRef, databaseRef, provider } from "../config/firebase";
 import * as firebase from "firebase";
+import history from '../components/auth/history'
 
 import axios from 'axios';
 
@@ -46,7 +47,7 @@ export const fetchUserResumes = uid => async dispatch => {
   .once('value', snap => {
     console.log(snap.val())
     if(!snap.val()) {
-      dispatch(fetchSuccess(false, "" )); 
+      dispatch(fetchSuccess(false, "" ));
     } else {
       dispatch(fetchSuccess(false, snap.val() ));
     }
@@ -123,7 +124,9 @@ export const signIn = () => dispatch => {
   authRef
     .signInWithPopup(provider)
     .then(result => {
-      this.context.router.history.push("/user");
+      console.log("done!")
+      history.push('/user')
+
     })
     .catch(error => {
       console.log(error);
@@ -134,7 +137,7 @@ export const signOut = () => dispatch => {
   authRef
     .signOut()
     .then(() => {
-      this.context.router.history.push("/");
+      // Sign-out successful.
     })
     .catch(error => {
       console.log(error);

@@ -11,7 +11,8 @@ class Signin extends Component {
 
   componentWillUpdate(nextProps) {
     if (nextProps.auth) {
-      this.props.history.push('/new');
+      console.log("Authenticated")
+      this.props.history.push('/user');
     }
   }
 
