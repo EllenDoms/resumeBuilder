@@ -58,7 +58,7 @@ export default function CvReducer (state = initialState, action) {
       case SAVED_RESUME:
         return {
           ...state,
-          status: 'Saved!'
+          status: `Last saved at ${action.payload}`
         }
     case SET_FORMTAB_ACTIVE:
       // return default json

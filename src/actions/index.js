@@ -92,7 +92,14 @@ export const postResumeValue = (values, key) => async dispatch => {
   .then(data => {
     console.log('saved')
     setTimeout(() => {
-      dispatch({ type: SAVED_RESUME })
+      let d = new Date();
+      let h = d.getHours();
+      let m = d.getMinutes();
+      let time = h + "h" + m
+      dispatch({
+        type: SAVED_RESUME,
+        payload: time
+      })
     }, 200)
 
   })
