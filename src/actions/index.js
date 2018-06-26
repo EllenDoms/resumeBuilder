@@ -120,18 +120,50 @@ export const fetchUser = () => dispatch => {
   })
 };
 
-export const signIn = () => dispatch => {
+export const signUpPass = (email, pass) => dispatch => {
   authRef
-    .signInWithPopup(provider)
+  .createUserWithEmailAndPassword(email, pass)
+  .catch(function(error) {
+    console.log(error)
+  });
+}
+
+export const signIn = (email, pass) => dispatch => {
+  if(email && pass) {
+    console.log("with pass")
+    authRef
+    .signInWithEmailAndPassword(email, pass)
     .then(result => {
       console.log("done!")
       history.push('/user')
-
     })
-    .catch(error => {
-      console.log(error);
+    .catch(function(error) {
+      console.log(error)
     });
+  } else {
+    authRef
+      .signInWithPopup(provider)
+      .then(result => {
+        console.log("done!")
+        history.push('/user')
+
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
 };
+
+export const signInForgot = (email) => dispatch => {
+  console.log(email)
+  authRef
+  .sendPasswordResetEmail(email)
+  .then(function() {
+    console.log('email send')
+  }).catch(function(error) {
+    console.log(error)
+  });
+}
 
 export const signOut = () => dispatch => {
   authRef

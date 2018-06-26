@@ -42,6 +42,18 @@
 }
 .builderCss a {
   text-decoration: none;
+  opacity: 0.8;
+}
+.builderCss a:hover {
+  opacity: 1;
+}
+.builderCss p {
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+.builderCss .fa {
+  color: #FFF;
+  margin-right: 10px;
 }
 .builderCss .btn {
   color: #FFFFFF;
@@ -65,9 +77,18 @@
 .builderCss .btn.btn-secondary {
   border: solid 1px #122E48;
 }
+.builderCss .btn.full-width {
+  width: 100%;
+}
+.builderCss .btn.google {
+  background: #DD4B39;
+}
 .builderCss .btn:hover {
   opacity: 1;
   cursor: pointer;
+}
+.builderCss .center {
+  text-align: center;
 }
 .builderCss #pageContent {
   min-height: calc(100vh - 108px);
@@ -245,6 +266,51 @@
 }
 .builderCss #footer {
   background-color: #122E48;
+}
+.builderCss#SignInPage {
+  background: linear-gradient(-135deg, #00BA95 0%, #00919F 100%);
+  height: 100vh;
+  overflow: hidden;
+}
+.builderCss#SignInPage .container {
+  max-width: 500px;
+  margin-top: 15vh;
+  text-align: justify;
+}
+.builderCss#SignInPage h2 {
+  text-align: center;
+  margin-top: 20px;
+}
+.builderCss#SignInPage .tabs {
+  float: left;
+  margin-top: 20%;
+  width: 120px;
+  margin-left: calc(40% - 100px);
+}
+.builderCss#SignInPage .tabs li {
+  margin-bottom: 20px;
+  padding: 20px 40px 20px 20px;
+}
+.builderCss#SignInPage .tabs li a {
+  color: #FFF;
+}
+.builderCss#SignInPage .tabs li.active {
+  background-color: #FFF;
+  border-radius: 4px;
+  color: #00919F;
+}
+.builderCss#SignInPage .side {
+  width: 60%;
+  height: 100vh;
+  margin-left: 40%;
+  padding-top: 1px;
+  background-color: #FFF;
+  top: 0;
+}
+.builderCss#SignInPage .side img {
+  width: 55Px;
+  margin: 0 auto;
+  display: block;
 }
 @media only screen and (max-width: 600px) {
   .builderCss #topBlock #tagline h1 {

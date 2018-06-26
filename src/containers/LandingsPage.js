@@ -25,7 +25,7 @@ export default class LandingsPage extends Component {
             <div id="tagline">
               <h1 className="fontsforweb_bignoodletitling">Build Your resume. <br/>Get the job.</h1>
               <p className="fontsforweb_bignoodletitling">(Yes, it's that simple)</p>
-              <Link to={`/login`} className="btn btn-primary2">Create account</Link>
+              <Link to={`/signin`} className="btn btn-primary2">Create account</Link>
               <Link to={`/resume/demoresume`} target="_blank" className="btn btn-secondary">See demo</Link>
             </div>
           </div>

@@ -52,7 +52,19 @@ out:  builderCss.css
     padding: 0 6%;
   }
 
-  a {text-decoration: none;}
+  a {
+    text-decoration: none;
+    opacity: 0.8;
+    &:hover { opacity: 1; }
+  }
+  p {
+    margin-bottom: 20px;
+    font-size: 14px;
+  }
+  .fa {
+    color: #FFF;
+    margin-right: 10px;
+  }
 
   .btn {
     color: #FFFFFF;
@@ -69,11 +81,14 @@ out:  builderCss.css
     &.btn-primary { background: @primary; }
     &.btn-primary2 { background: @primarydark; }
     &.btn-secondary { border: solid 1px @primarydark; }
+    &.full-width { width: 100%; }
+    &.google { background: #DD4B39; }
     &:hover {
       opacity: 1;
       cursor: pointer;
     }
   }
+  .center { text-align: center;}
   #pageContent {
     min-height: ~"calc(100vh - 108px)";
     background-color: @greylightest;
@@ -241,6 +256,49 @@ out:  builderCss.css
   }
   #footer {
     background-color: @primarydark;
+  }
+  &#SignInPage {
+    background: linear-gradient(-135deg, #00BA95 0%, #00919F 100%);
+    height: 100vh;
+    overflow: hidden;
+    .container {
+      max-width: 500px;
+      margin-top: 15vh;
+      text-align: justify;
+    }
+    h2 {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .tabs {
+      float: left;
+      margin-top: 20%;
+      width: 120px;
+      margin-left: ~"calc(40% - 100px)";
+      li {
+        margin-bottom: 20px;
+        padding: 20px 40px 20px 20px;
+        a { color: #FFF;}
+        &.active {
+          background-color: #FFF;
+          border-radius: 4px;
+          color: @secondary;
+        }
+      }
+    }
+    .side {
+      width: 60%;
+      height: 100vh;
+      margin-left: 40%;
+      padding-top: 1px;
+      background-color: #FFF;
+      top: 0;
+      img {
+        width: 55Px;
+        margin: 0 auto;
+        display: block;
+      }
+    }
   }
 
 
