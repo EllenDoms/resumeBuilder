@@ -3,9 +3,11 @@ import { connect } from "react-redux";
 import { signIn } from "../actions";
 import PropTypes from "prop-types";
 import { Link } from 'react-router-dom'; //navigate in app
+import { Field, reduxForm } from 'redux-form';
 
 import logo from '../img/logoColor.png';
-
+import validate from './signUpValidate';
+import { ShortField } from '../components/form';
 
 class Signin extends Component {
   static contextTypes = {
@@ -13,16 +15,16 @@ class Signin extends Component {
   };
 
   componentWillUpdate(nextProps) {
-    if (nextProps.auth) {
+    if (nextProps.auth && nextProps.auth.email) {
       console.log("Authenticated")
+      this.props.history.push('/user');
     }
   }
-  formSubmit = (event) => {
-    const email = event.target[0].value;
-    const pass = event.target[1].value;
-    this.props.signIn(email, pass);
+  formSubmit = (values) => {
+    this.props.signIn(values);
   }
   render() {
+    const { auth, error, handleSubmit } = this.props
     return (
       <div id="SignInPage" className="builderCss">
         <ul className='tabs'>
@@ -33,20 +35,15 @@ class Signin extends Component {
           <div className="container">
             <img src={logo} alt='ResumePage Logo' />
             <h2>Great to see you again!</h2>
-            <form onSubmit={this.formSubmit}>
-              <div >
-                <label>Email</label>
-                <input type="email" />
-              </div>
-              <div >
-                <label>Password</label>
-                <input type="password" />
-              </div>
+            <form onSubmit={handleSubmit(this.formSubmit)}>
+              <Field name='email' label='Email' component={ShortField} type='text' />
+              <Field name='password' label='Password' component={ShortField} type='password' />
+              {auth && auth.error ? <span className="error">{auth.error}</span> : ""}
               <button className='btn btn-primary full-width'>Sign in</button>
             </form>
             <p className="center"><Link to={'/signinforgot'} className="center">Forgot password?</Link></p>
             <p className='center'>Or</p>
-            <button href="#" className="btn full-width google social-signin" onClick={this.props.signInForgot}>
+            <button href="#" className="btn full-width google social-signin" onClick={this.props.signIn}>
               <i className="fa fa-google social-signin-icon" />
               Sign in with Google
             </button>
@@ -61,4 +58,7 @@ function mapStateToProps({ auth }) {
   return { auth };
 }
 
-export default connect(mapStateToProps, { signIn })(Signin);
+export default reduxForm({
+  validate,
+  form: 'signInForm',
+})( connect(mapStateToProps, { signIn })(Signin));

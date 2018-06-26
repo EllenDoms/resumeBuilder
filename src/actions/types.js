@@ -1,4 +1,5 @@
 export const FETCH_USER = 'FETCH_USER';
+export const SIGNIN_ERROR = 'SIGNIN_ERROR';
 export const FETCH_LOADING = 'FETCH_LOADING';
 export const FETCH_SUCCESS = 'FETCH_SUCCESS';
 export const FETCH_NOTFOUND = 'FETCH_NOTFOUND';

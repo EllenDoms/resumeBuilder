@@ -1,7 +1,8 @@
-import { FETCH_USER, FETCH_LOADING, FETCH_NOTFOUND, FETCH_SUCCESS, SET_RESUME_ACTIVE, ADD_NEW_RESUME, DELETE_RESUME, SET_FORMTAB_ACTIVE } from './types';
+import { FETCH_USER, SIGNIN_ERROR, FETCH_LOADING, FETCH_NOTFOUND, FETCH_SUCCESS, SET_RESUME_ACTIVE, ADD_NEW_RESUME, DELETE_RESUME, SET_FORMTAB_ACTIVE } from './types';
 import { config, authRef, databaseRef, provider } from "../config/firebase";
 import * as firebase from "firebase";
-import history from '../components/auth/history'
+import history from '../components/auth/history';
+import { SubmissionError } from 'redux-form';
 
 import axios from 'axios';
 
@@ -120,15 +121,23 @@ export const fetchUser = () => dispatch => {
   })
 };
 
-export const signUpPass = (email, pass) => dispatch => {
+export const signUpPass = (values) => dispatch => {
+  const email = values.email;
+  const pass = values.password;
   authRef
   .createUserWithEmailAndPassword(email, pass)
   .catch(function(error) {
-    console.log(error)
+    console.log(error.message);
+    dispatch({
+      type: SIGNIN_ERROR,
+      payload: error.message
+    })
   });
 }
 
-export const signIn = (email, pass) => dispatch => {
+export const signIn = (values) => dispatch => {
+  const email = values.email;
+  const pass = values.password;
   if(email && pass) {
     console.log("with pass")
     authRef
@@ -138,7 +147,11 @@ export const signIn = (email, pass) => dispatch => {
       history.push('/user')
     })
     .catch(function(error) {
-      console.log(error)
+      console.log(error.message);
+      dispatch({
+        type: SIGNIN_ERROR,
+        payload: error.message
+      })
     });
   } else {
     authRef
