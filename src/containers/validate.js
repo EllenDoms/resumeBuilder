@@ -10,7 +10,14 @@ const validate = values => { //validate function will automatically be called by
       quote: {_error: 'Required'}
     }
   } else {
-    errors.information = {}
+    if (
+      !values.information.firstName ||
+      !values.information.lastName ||
+      !values.information.email ||
+      !values.information.telephone ||
+      !values.information.quote
+    ) { errors.information = {} }
+
     if(!values.information.firstName) {errors.information.firstName = {_error: 'Required' }};
     if(!values.information.lastName) {errors.information.lastName = { _error: 'Required'}};
     if(!values.information.email) {errors.information.email = { _error: 'Required'}};
@@ -24,7 +31,11 @@ const validate = values => { //validate function will automatically be called by
       content: 'At least one paragraph must be entered.'
     }
   } else {
-    errors.intro = {}
+    if(
+      !values.intro.title ||
+      !values.intro.content
+    ) { errors.intro = {} }
+
     if(!values.intro.title) {
       errors.intro.title = 'You must add a title';
     }

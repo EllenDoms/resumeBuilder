@@ -2,7 +2,8 @@ import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchUser, fetchUserResumes, newResume, setActiveResume, setActiveFormtab, postResumeValue } from '../actions';
-import { Redirect } from 'react-router'
+import { Redirect } from 'react-router';
+import { Link } from 'react-router-dom'; //navigate in app
 
 import { Field, Fields, FieldArray, reduxForm } from 'redux-form';
 import { ShortField, LongField, Timeline, MultiField, ParagraphFields, ProgressBar, Tooltip } from '../components/form';
@@ -50,7 +51,7 @@ class ResumeNew extends Component {
     if (loading || !formValues) {
       return <Loading />;
     }
-    {console.log(formValues.values)}
+    console.log(formValues.syncErrors)
 
     return(
       <div className='builderCss'>
@@ -62,7 +63,9 @@ class ResumeNew extends Component {
             <div id='formContent'>
               <ul className='tabs'>
                 {this.renderTabs()}
+                {!formValues.syncErrors ? <Link to={`/resume/demoresume`} target="_blank" className="btn btn-primary">View resume</Link> : <button className="btn btn-primary btn-disabled">View Resume</button>}
               </ul>
+
               <div className='rightContent'>
                 <div id="tabTemplate" className={formtab == 'Template' ? "visible" : "hidden" } >
                   WIP
@@ -147,7 +150,6 @@ let InitializeFromStateForm = reduxForm({
 })(ResumeNew);
 
 function mapStateToProps(state) {
-  console.log(state)
   return {
     id: state.data.active,
     data: state.data,
