@@ -33,7 +33,8 @@ const validate = values => { //validate function will automatically be called by
   } else {
     if(
       !values.intro.title ||
-      !values.intro.content
+      !values.intro.content ||
+      typeof values.intro.content[0] == 'undefined'
     ) { errors.intro = {} }
 
     if(!values.intro.title) {
@@ -46,9 +47,14 @@ const validate = values => { //validate function will automatically be called by
         values.intro.content.forEach(paragraph => {
           if (paragraph) { characters = characters + paragraph.length}
           return characters;
-        });
-        if(characters > 800) { errors.intro.content = { [0]: `Add a description between 400 and 800 characters. (${characters})` }}
-        else if(characters < 400) { errors.intro.content = { [0]: `Add a description between 400 and 800 characters. (${characters})` }};
+        })
+        if(characters > 800) {
+          if (!errors.intro) { errors.intro = []}
+          errors.intro.content = { [0]: `Add a description between 400 and 800 characters. (${characters})` }
+        } else if(characters < 400) {
+          if (!errors.intro) { errors.intro = []}
+          errors.intro.content = { [0]: `Add a description between 400 and 800 characters. (${characters})` }
+        };
     }
   };
 

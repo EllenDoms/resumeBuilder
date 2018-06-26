@@ -220,6 +220,9 @@
   padding: 10px;
   bottom: -15px;
 }
+.builderCss #welcome .appQuote p {
+  margin-bottom: 0;
+}
 .builderCss #topBlock {
   height: 100vh;
 }

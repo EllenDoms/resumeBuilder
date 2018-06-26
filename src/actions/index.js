@@ -87,6 +87,8 @@ export const deleteResume = key => async dispatch => {
 export const postResumeValue = (values, key) => async dispatch => {
   console.log('saving')
   dispatch({ type: SAVING_RESUME });
+  console.log(values)
+  console.log(key)
   firebase.database().ref(`resumes/${key}`)
   .set(values)
   .then(data => {
@@ -94,7 +96,7 @@ export const postResumeValue = (values, key) => async dispatch => {
     setTimeout(() => {
       let d = new Date();
       let h = d.getHours();
-      let m = d.getMinutes();
+      let m = (d.getMinutes()<10?'0':'') + d.getMinutes();
       let time = h + "h" + m
       dispatch({
         type: SAVED_RESUME,
