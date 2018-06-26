@@ -50,7 +50,6 @@ class UserPage extends Component {
                 Add new Resume!
               </Link>
             </div>
-
             {this.renderResumes()}
           </div>
         </div>

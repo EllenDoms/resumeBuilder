@@ -1,4 +1,4 @@
-import { FETCH_USER, SIGNIN_ERROR, FETCH_LOADING, FETCH_NOTFOUND, FETCH_SUCCESS, SET_RESUME_ACTIVE, ADD_NEW_RESUME, DELETE_RESUME, SET_FORMTAB_ACTIVE } from './types';
+import { FETCH_USER, SIGNIN_ERROR, FETCH_LOADING, FETCH_NOTFOUND, FETCH_SUCCESS, SET_RESUME_ACTIVE, ADD_NEW_RESUME, DELETE_RESUME, SAVING_RESUME, SAVED_RESUME, SET_FORMTAB_ACTIVE } from './types';
 import { config, authRef, databaseRef, provider } from "../config/firebase";
 import * as firebase from "firebase";
 import history from '../components/auth/history';
@@ -85,7 +85,18 @@ export const deleteResume = key => async dispatch => {
 }
 
 export const postResumeValue = (values, key) => async dispatch => {
-  return firebase.database().ref(`resumes/${key}`).set(values)
+  console.log('saving')
+  dispatch({ type: SAVING_RESUME });
+  firebase.database().ref(`resumes/${key}`)
+  .set(values)
+  .then(data => {
+    console.log('saved')
+    setTimeout(() => {
+      dispatch({ type: SAVED_RESUME })
+    }, 200)
+
+  })
+
 }
 
 

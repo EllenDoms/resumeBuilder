@@ -1,4 +1,4 @@
-import { FETCH_SUCCESS, FETCH_LOADING, FETCH_NOTFOUND, SET_RESUME_ACTIVE, ADD_NEW_RESUME, DELETE_RESUME, SET_FORMTAB_ACTIVE } from '../actions/types';
+import { FETCH_SUCCESS, FETCH_LOADING, FETCH_NOTFOUND, SET_RESUME_ACTIVE, ADD_NEW_RESUME, DELETE_RESUME, SAVING_RESUME, SAVED_RESUME, SET_FORMTAB_ACTIVE } from '../actions/types';
 import _ from 'lodash';
 
 const initialState = {
@@ -6,7 +6,8 @@ const initialState = {
   resumes: {},
   loading: true,
   notFound: '',
-  formtab: 'Template'
+  formtab: 'Template',
+  status: ''
 };
 
 export default function CvReducer (state = initialState, action) {
@@ -36,19 +37,29 @@ export default function CvReducer (state = initialState, action) {
         ...state,
         active: action.payload,
       };
-      case ADD_NEW_RESUME:
-        // return default json
+    case ADD_NEW_RESUME:
+      // return default json
+      return {
+        ...state,
+        active: action.key,
+        resumes: {...state.resumes, [action.key]: action.resume}
+      };
+    case DELETE_RESUME:
+      // return default json
+      return {
+        ...state,
+        resumes: _.omit('resumes', [action.key])
+      };
+    case SAVING_RESUME:
+      return {
+        ...state,
+        status: 'Saving...'
+      }
+      case SAVED_RESUME:
         return {
           ...state,
-          active: action.key,
-          resumes: {...state.resumes, [action.key]: action.resume}
-        };
-      case DELETE_RESUME:
-        // return default json
-        return {
-          ...state,
-          resumes: _.omit('resumes', [action.key])
-        };
+          status: 'Saved!'
+        }
     case SET_FORMTAB_ACTIVE:
       // return default json
       return {

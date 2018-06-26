@@ -100,6 +100,14 @@
 .builderCss #pageContent.pageHeader {
   min-height: calc(100vh - 193px);
 }
+.builderCss #pageContent .inline {
+  width: 80%;
+}
+.builderCss #pageContent #saving {
+  float: right;
+  margin-top: 40px;
+  font-style: italic;
+}
 .builderCss #pageContent #newCard {
   background: #FFFFFF;
   border: 1px dashed #E3E7EB;
