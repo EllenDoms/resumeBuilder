@@ -3,12 +3,11 @@ import { connect } from "react-redux";
 import { signIn, signUpPass } from "../actions";
 import PropTypes from "prop-types";
 import { Link } from 'react-router-dom'; //navigate in app
-import { Field, Fields, FieldArray, reduxForm } from 'redux-form';
+import { Field, reduxForm } from 'redux-form';
 
 import logo from '../img/logoColor.png';
 import validate from './signUpValidate';
 import { ShortField } from '../components/form';
-
 
 class Signin extends Component {
   static contextTypes = {
@@ -16,21 +15,17 @@ class Signin extends Component {
   };
 
   componentWillUpdate(nextProps) {
-    if (nextProps.auth) {
+    if (nextProps.auth && nextProps.auth.email) {
       console.log("Authenticated")
       this.props.history.push('/user');
     }
   }
   formSubmit = (values) => {
-    console.log(values)
-
-    // this.props.signUpPass(values, () => {
-    //   this.props.history.push('/');
-    // });
-
+    this.props.signUpPass(values);
   }
   render() {
-    const { error, handleSubmit } = this.props
+    const { auth, error, handleSubmit } = this.props
+    console.log(this.props)
     return (
       <div id="SignInPage" className="builderCss">
         <ul className='tabs'>
@@ -44,10 +39,11 @@ class Signin extends Component {
             <form onSubmit={handleSubmit(this.formSubmit)}>
               <Field name='email' label='Email' component={ShortField} type='text' />
               <Field name='password' label='Password' component={ShortField} type='password' />
+              {auth && auth.error ? <span className="error">{auth.error}</span> : ""}
               <button className='btn btn-primary full-width'>Sign up</button>
             </form>
             <p className='center'>Or</p>
-            <button href="#" className="btn full-width google social-signin" onClick={this.props.signInForgot}>
+            <button href="#" className="btn full-width google social-signin" onClick={this.props.signIn}>
               <i className="fa fa-google social-signin-icon" />
               Sign up with Google
             </button>
@@ -65,5 +61,4 @@ function mapStateToProps({ auth }) {
 export default reduxForm({
   validate,
   form: 'signInForm',
-
 })( connect(mapStateToProps, { signIn, signUpPass })(Signin));
