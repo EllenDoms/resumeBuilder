@@ -12,8 +12,10 @@ out:  form.css
 @greyborder: #E3E7EB;
 @greytext: #6D7A82;
 @greydark: #272B2D;
+@funcError: #D15A3C;
 @gradient: linear-gradient(135deg, #00BA95 0%, #00919F 100%);
 @boxShadow: 0 0 7px 0 rgba(0,0,0,0.08);
+@boxShadowMedium: 0 2px 4px 0 rgba(0,0,0,0.25);
 @errorbad: #D15A3C;
 
 h1 {
@@ -121,8 +123,31 @@ form {
         margin-bottom: 20px;
         color: @greytext;
         font-size: 14px;
+        .number {
+          background: #FFFFFF;
+          box-shadow: @boxShadowMedium;
+          width: 22px;
+          height: 22px;
+          display: inline-block;
+          text-align: center;
+          line-height: 22px;
+          margin-right: 10px;
+          border-radius: 12px;
+          font-size: 10px;
+          font-weight: bold;
+        }
         &:hover { cursor: pointer; color: @greydark; }
-        &.active { color: @greydark; }
+        &.active {
+          color: @greydark;
+          .number {
+            background-color: @primarydark;
+            color: #FFF;
+          }
+        }
+        &.done {
+          .number { color: @primary; }
+          &.active .number { background-color: @primary; color: #FFF; }
+        }
       }
     }
     .rightContent {

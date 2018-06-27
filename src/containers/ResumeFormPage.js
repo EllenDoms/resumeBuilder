@@ -29,21 +29,30 @@ class ResumeNew extends Component {
   saveField = (values) => {
     if(values.values) {
       this.props.postResumeValue(values.values, this.props.id);
-    } else {
-      console.log('nothing')
     }
 
   }
   renderTabs() {
-    const tabs = ['Template', 'General', 'Intro', 'Experience', 'Education', 'Expertise', 'Skills', 'Personality', 'Passions'];
-    return _.map(tabs, tab => {
-      return (
-        <li
-          key={tab}
-          onClick={() => {this.props.setActiveFormtab(tab)}}
-          className={this.props.formtab == tab ? "active" : ""}
-        >{tab}</li>
-      )
+    const tabs = ['template', 'information', 'intro', 'experience', 'education', 'expertise', 'skills', 'personality', 'passions'];
+    return _.map(tabs, (tab, i) => {
+      if (!this.props.formValues.syncErrors || !this.props.formValues.syncErrors.hasOwnProperty(tab)) {
+        // items are validate ok
+        return (
+          <li
+            key={tab}
+            onClick={() => {this.props.setActiveFormtab(tab)}}
+            className={this.props.formtab == tab ? `active done` : "done" }
+          ><span className="number material-icons">done</span>{tab}</li>
+        )
+      } else {
+        return (
+          <li
+            key={tab}
+            onClick={() => {this.props.setActiveFormtab(tab)}}
+            className={this.props.formtab == tab ? `active` : "" }
+          ><span className="number">{(i + 1)}</span>{tab}</li>
+        )
+      }
     })
   }
   render() {
@@ -51,7 +60,7 @@ class ResumeNew extends Component {
     if (loading || !formValues) {
       return <Loading />;
     }
-    console.log(formValues.syncErrors)
+
 
     return(
       <div className='builderCss'>
@@ -67,10 +76,10 @@ class ResumeNew extends Component {
               </ul>
 
               <div className='rightContent'>
-                <div id="tabTemplate" className={formtab == 'Template' ? "visible" : "hidden" } >
+                <div id="tabTemplate" className={formtab == 'template' ? "visible" : "hidden" } >
                   WIP
                 </div>
-                <div id="tabGeneral" className={formtab == 'General' ? "visible" : "hidden" }>
+                <div id="tabGeneral" className={formtab == 'information' ? "visible" : "hidden" }>
                   <h3>General</h3>
                   <div className="container">
                     <Field onBlur={() => this.saveField(formValues)} name='information.firstName' label='First name *' component={ShortField} className='half left' type='text' />
@@ -84,49 +93,49 @@ class ResumeNew extends Component {
                     <Field onBlur={() => this.saveField(formValues)} name='information.quote' label='Quote *' component={LongField} className='whole' />
                   </div>
                 </div>
-                <div id="tabIntro" className={formtab == 'Intro' ? "visible" : "hidden" }>
+                <div id="tabIntro" className={formtab == 'intro' ? "visible" : "hidden" }>
                   <h3>Intro</h3>
                   <div className="container">
                     <Field onBlur={() => this.saveField(formValues)} name='intro.title' label='Title *' component={ShortField} />
                     <FieldArray parentMethod={() => this.saveField(formValues)} label='' name='intro.content' component={ParagraphFields} /> {/* more than one, max 5. Characters 400 - 800 */}
                   </div>
                 </div>
-                <div id="tabExperience" className={formtab == 'Experience' ? "visible" : "hidden" }>
+                <div id="tabExperience" className={formtab == 'experience' ? "visible" : "hidden" }>
                   <h3>Experience</h3>
                   <div className="container">
                     <FieldArray parentMethod={() => this.saveField(formValues)} label={[ 'Job title', 'Company', 'From', 'Until' ]} name='experience' component={Timeline}/> {/* more than one, together with education max 6 */}
                     <FieldArray parentMethod={() => this.saveField(formValues)} label={['Title', 'Link', 'Description']} name='experience' component={Tooltip} />
                   </div>
                 </div>
-                <div id="tabEducation" className={formtab == 'Education' ? "visible" : "hidden" }>
+                <div id="tabEducation" className={formtab == 'education' ? "visible" : "hidden" }>
                   <h3>Education</h3>
                   <div className="container">
                     <FieldArray parentMethod={() => this.saveField(formValues)} label={[ 'Title', 'Degree', 'From', 'Until' ]} name='education' component={Timeline}/> {/* more than one, together with education max 6 */}
                     <FieldArray parentMethod={() => this.saveField(formValues)} label={['Title', 'Link', 'Description']} name='education' component={Tooltip} />
                   </div>
                 </div>
-                <div id="tabExpertise" className={formtab == 'Expertise' ? "visible" : "hidden" }>
+                <div id="tabExpertise" className={formtab == 'expertise' ? "visible" : "hidden" }>
                   <h3>Expertise</h3>
                   <div className="container">
                     <FieldArray parentMethod={() => this.saveField(formValues)} label={['Title', 'Rating (%)']} name='expertise' component={ProgressBar} /> {/* more than one, skill/2 + expertise less than 11 */}
                     <FieldArray parentMethod={() => this.saveField(formValues)} label={['Title', 'Link', 'Description']} name='expertise' component={Tooltip} />
                   </div>
                 </div>
-                <div id="tabSkills" className={formtab == 'Skills' ? "visible" : "hidden" }>
+                <div id="tabSkills" className={formtab == 'skills' ? "visible" : "hidden" }>
                   <h3>Skills</h3>
                   <div className="container">
                     <FieldArray parentMethod={() => this.saveField(formValues)} label='' name='skills' component={MultiField} />{/* more than one, skill/2 + expertise less than 11 */}
                     <FieldArray parentMethod={() => this.saveField(formValues)} label={['Title', 'Link', 'Description']} name='skills' component={Tooltip} />
                   </div>
                 </div>
-                <div id="tabPersonality" className={formtab == 'Personality' ? "visible" : "hidden" }>
+                <div id="tabPersonality" className={formtab == 'personality' ? "visible" : "hidden" }>
                   <h3>Personality</h3>
                   <div className="container">
                     <FieldArray parentMethod={() => this.saveField(formValues)} label='' name='personality' component={MultiField} /> {/* more than one */}
                     <FieldArray parentMethod={() => this.saveField(formValues)} label={['Title', 'Link', 'Description']} name='personality' component={Tooltip} />
                   </div>
                 </div>
-                <div id="tabPassions" className={formtab == 'Passions' ? "visible" : "hidden" }>
+                <div id="tabPassions" className={formtab == 'passions' ? "visible" : "hidden" }>
                   <h3>Passions</h3>
                   <div className="container">
                     <FieldArray parentMethod={() => this.saveField(formValues)} label='' name='passions' component={MultiField} /> {/* more than one */}

@@ -6,7 +6,7 @@ const initialState = {
   resumes: {},
   loading: true,
   notFound: '',
-  formtab: 'Template',
+  formtab: 'template',
   status: ''
 };
 

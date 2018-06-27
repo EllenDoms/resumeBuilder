@@ -111,12 +111,36 @@ form #formContent .tabs li {
   color: #6D7A82;
   font-size: 14px;
 }
+form #formContent .tabs li .number {
+  background: #FFFFFF;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
+  width: 22px;
+  height: 22px;
+  display: inline-block;
+  text-align: center;
+  line-height: 22px;
+  margin-right: 10px;
+  border-radius: 12px;
+  font-size: 10px;
+  font-weight: bold;
+}
 form #formContent .tabs li:hover {
   cursor: pointer;
   color: #272B2D;
 }
 form #formContent .tabs li.active {
   color: #272B2D;
+}
+form #formContent .tabs li.active .number {
+  background-color: #122E48;
+  color: #FFF;
+}
+form #formContent .tabs li.done .number {
+  color: #00BA95;
+}
+form #formContent .tabs li.done.active .number {
+  background-color: #00BA95;
+  color: #FFF;
 }
 form #formContent .rightContent {
   background: #FFFFFF;

@@ -10,21 +10,18 @@ export default function(ComposedComponent) {
 
     componentWillMount() {
       if (this.props.authenticated === null) {
-        console.log("Mount not authenticated")
         this.context.router.history.push("/signin");
       }
     }
 
     componentWillUpdate(nextProps) {
       if (!nextProps.authenticated) {
-        console.log("Logging out")
         this.context.router.history.push("/");
       }
     }
 
     render() {
       if (this.props.authenticated) {
-        console.log("Render authenticated")
         return <ComposedComponent {...this.props} />;
       }
       return null;

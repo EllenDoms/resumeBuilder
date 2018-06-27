@@ -46,7 +46,6 @@ export function setActiveFormtab(tab) {
 export const fetchUserResumes = uid => async dispatch => {
   databaseRef.orderByChild("user").equalTo(uid)
   .once('value', snap => {
-    console.log(snap.val())
     if(!snap.val()) {
       dispatch(fetchSuccess(false, "" ));
     } else {
@@ -85,14 +84,12 @@ export const deleteResume = key => async dispatch => {
 }
 
 export const postResumeValue = (values, key) => async dispatch => {
-  console.log('saving')
   dispatch({ type: SAVING_RESUME });
   console.log(values)
   console.log(key)
   firebase.database().ref(`resumes/${key}`)
   .set(values)
   .then(data => {
-    console.log('saved')
     setTimeout(() => {
       let d = new Date();
       let h = d.getHours();
@@ -188,7 +185,6 @@ export const signIn = (values) => dispatch => {
 };
 
 export const signInForgot = (email) => dispatch => {
-  console.log(email)
   authRef
   .sendPasswordResetEmail(email)
   .then(function() {
