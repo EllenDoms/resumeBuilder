@@ -33,6 +33,7 @@ class Signin extends Component {
           <li className="active">Sign up</li>
         </ul>
         <div className="side">
+          <Link to="/" id="close" className="material-icons">close</Link>
           <div className="container">
             <img src={logo} alt='ResumePage Logo' />
             <h2>Always nice to make a new friend!</h2>

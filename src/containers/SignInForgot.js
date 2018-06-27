@@ -25,6 +25,7 @@ class Signin extends Component {
     return (
       <div id="SignInPage" className="builderCss">
         <div className="side">
+          <Link to="/signin" id="close" className="material-icons">close</Link>
           <div className="container">
             <img src={logo} alt='ResumePage Logo' />
             <h2>Ohoh, forgot your password?</h2>

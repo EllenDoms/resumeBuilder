@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import { Link } from 'react-router-dom'; //navigate in app
 import { Field, reduxForm } from 'redux-form';
 
+import Header from '../components/header';
 import logo from '../img/logoColor.png';
 import validate from './signUpValidate';
 import { ShortField } from '../components/form';
@@ -32,6 +33,7 @@ class Signin extends Component {
           <li><Link to="/signUp">Sign up</Link></li>
         </ul>
         <div className="side">
+          <Link to="/" id="close" className="material-icons">close</Link>
           <div className="container">
             <img src={logo} alt='ResumePage Logo' />
             <h2>Great to see you again!</h2>
