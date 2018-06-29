@@ -17,16 +17,18 @@ class UserPage extends Component {
   }
   renderResumes() {
     return _.map(this.props.resumes, (resumes, id) => {
-      return (
-        <div className="resumeCard col" key={id}>
-          <div className="cardHeader">
-            <DropdownMenu id={id} />
-            <h3>{resumes.name}</h3>
+      if(resumes.status == "active") {
+        return (
+          <div className="resumeCard col" key={id}>
+            <div className="cardHeader">
+              <DropdownMenu id={id} />
+              <h3>{resumes.name}</h3>
+            </div>
+            <img className='demo' />
+            <Link to={`/edit/${id}`} className='btn btn-primary'>Edit resume</Link>
           </div>
-          <img className='demo' />
-          <Link to={`/edit/${id}`} className='btn btn-primary'>Edit resume</Link>
-        </div>
-      )
+        )
+      }
     })
   }
   render() {
@@ -40,7 +42,7 @@ class UserPage extends Component {
         <div id="welcome">
           <h2 className="fontsforweb_bignoodletitling center white">Hello {this.props.authenticated.displayName}!</h2>
           <div className="container">
-            <div className="appQuote"><p>Did you know that the average time spent by recruiters looking at a resume is only 5 to 7 seconds?</p></div>
+            <div className="appQuote"><p>Did you know that the average time spent by recruiters looking at a resume is only 6 seconds?</p></div>
           </div>
         </div>
         <div id="pageContent" className='longHeader'>

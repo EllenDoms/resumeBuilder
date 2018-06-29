@@ -51,7 +51,6 @@ export const fetchUserResumes = uid => async dispatch => {
     } else {
       dispatch(fetchSuccess(false, snap.val() ));
     }
-
   })
 }
 
@@ -68,25 +67,40 @@ export const newResume = (bool, values) => async dispatch => {
    })
 }
 
+export const duplicateResume = (oldKey) => async dispatch => {
+  firebase.database().ref(`resumes/${oldKey}`)
+  .on("value", (snap1) => {
+    let values = snap1.val();
+    values.name = `copy of ${snap1.val().name}`;
+    console.log(values)
+    return firebase.database().ref('resumes/')
+      .push(values)
+      .then((snap2) => {
+        console.log(snap2)
+         let key = snap2.key;
+         dispatch({
+           type: ADD_NEW_RESUME,
+           key: key,
+           resume: values,
+         })
+      })
+  })
+}
+
 export const deleteResume = key => async dispatch => {
-  console.log('Deleting resume');
-  // SOFT DELETE?!
-  // console.log(key)
-  // return firebase.database().ref('resumes/').child(key).remove()
-  //   .then((snap) => {
-  //     console.log(snap)
-  //     let key = snap.key;
-  //     dispatch({
-  //       type: DELETE_RESUME,
-  //       key: key
-  //     })
-  //   })
+  console.log('(soft) deleting resume');
+  firebase.database().ref(`resumes/${key}`)
+  .update({ "status" : "inactive" })
+  .then((snap) => {
+      dispatch({
+        type: DELETE_RESUME,
+        key: key
+      })
+    })
 }
 
 export const postResumeValue = (values, key) => async dispatch => {
   dispatch({ type: SAVING_RESUME });
-  console.log(values)
-  console.log(key)
   firebase.database().ref(`resumes/${key}`)
   .set(values)
   .then(data => {
@@ -102,9 +116,7 @@ export const postResumeValue = (values, key) => async dispatch => {
     }, 200)
 
   })
-
 }
-
 
 /*** PUBLIC RESUME PAGE ***/
 export const fetchResume = (key) => async dispatch => {
@@ -114,6 +126,8 @@ export const fetchResume = (key) => async dispatch => {
   .then(data => {
     if(!data) {
       dispatch(fetchNotFound(true))
+    } else if(data.data.status != "active") {
+      dispatch(fetchNotFound(true));
     } else {
       dispatch(fetchSuccess(false, data.data, key));
     }

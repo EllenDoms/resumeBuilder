@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'; //navigate in app
 import { connect } from "react-redux";
-import { deleteResume } from "../actions";
+import { duplicateResume, deleteResume } from "../actions";
 
 import './dropdownMenu.css';
 
@@ -38,8 +38,8 @@ class Card extends Component {
               }}
               >
                 <Link to={`resume/${this.props.id}`} target="_blank" className="item"> View resume </Link>
-                <a className="item"> Duplicate resume (WIP) </a>
-                <div onClick={() => {this.props.deleteResume(this.props.id)}} className="item"> Delete resume (WIP) </div>
+                <a onClick={() => {this.props.duplicateResume(this.props.id)}} className="item"> Duplicate resume </a>
+                <a onClick={() => {this.props.deleteResume(this.props.id)}} className="item red"> Delete resume </a>
               </div>
             )
             : (
@@ -51,4 +51,4 @@ class Card extends Component {
   }
 }
 
-export default connect(null, { deleteResume })(Card);
+export default connect(null, { duplicateResume, deleteResume })(Card);

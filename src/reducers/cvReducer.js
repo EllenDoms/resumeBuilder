@@ -42,14 +42,14 @@ export default function CvReducer (state = initialState, action) {
       return {
         ...state,
         active: action.key,
-        resumes: {...state.resumes, [action.key]: action.resume}
+        resumes: {...state.resumes, [action.key]: action.resume }
       };
     case DELETE_RESUME:
       // return default json
       return {
         ...state,
-        resumes: _.omit('resumes', [action.key])
-      };
+        resumes : { ...state.resumes, [action.key] : { "status" : "inactive" } }
+      }
     case SAVING_RESUME:
       return {
         ...state,

@@ -94,6 +94,9 @@
 .builderCss .center {
   text-align: center;
 }
+.builderCss .red {
+  color: #D15A3C;
+}
 .builderCss #pageContent {
   min-height: calc(100vh - 108px);
   background-color: #F9FAFB;

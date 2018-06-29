@@ -21,16 +21,17 @@ class ResumeNew extends Component {
     } else if(match.params.id == "new") {
       const values = {
         name: "New resume",
+        status: "active",
         user: authenticated.uid
       }
       this.props.newResume(true, values);
     }
   }
+
   saveField = (values) => {
     if(values.values) {
       this.props.postResumeValue(values.values, this.props.id);
     }
-
   }
   renderTabs() {
     const tabs = ['template', 'information', 'intro', 'experience', 'education', 'expertise', 'skills', 'personality', 'passions'];
