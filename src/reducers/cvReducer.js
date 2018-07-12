@@ -25,27 +25,23 @@ export default function CvReducer (state = initialState, action) {
         notFound: true
       }
     case FETCH_SUCCESS:
-      // return default json
       return {
         ...state,
         resumes: action.payload,
         loading: false
       };
     case SET_RESUME_ACTIVE:
-      // return default json
       return {
         ...state,
         active: action.payload,
       };
     case ADD_NEW_RESUME:
-      // return default json
       return {
         ...state,
         active: action.key,
         resumes: {...state.resumes, [action.key]: action.resume }
       };
     case DELETE_RESUME:
-      // return default json
       return {
         ...state,
         resumes : { ...state.resumes, [action.key] : { "status" : "inactive" } }

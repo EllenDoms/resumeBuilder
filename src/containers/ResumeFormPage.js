@@ -22,7 +22,8 @@ class ResumeNew extends Component {
       const values = {
         name: "New resume",
         status: "active",
-        user: authenticated.uid
+        user: authenticated.uid,
+        experience: [{}]
       }
       this.props.newResume(true, values);
     }
@@ -61,8 +62,6 @@ class ResumeNew extends Component {
     if (loading || !formValues) {
       return <Loading />;
     }
-
-
     return(
       <div className='builderCss'>
         <Header type='close' />

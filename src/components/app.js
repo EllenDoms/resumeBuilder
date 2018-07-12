@@ -23,8 +23,6 @@ import SignInForgot from '../containers/SignInForgot';
 import NotFound from './notFound';
 import reducers from '../reducers';
 
-const createStoreWithMiddleware = applyMiddleware(promise, reduxThunk)(createStore);
-
 export class App extends Component {
   componentWillMount() {
     this.props.fetchUser();
