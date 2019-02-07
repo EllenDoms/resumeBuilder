@@ -20,12 +20,12 @@
   font-family: 'Roboto', sans-serif;
 }
 .builderCss h1 {
-  font-family: BigNoodleTitling;
+  font-family: 'Teko', sans-serif;
   font-size: 8vw;
   color: #FFFFFF;
 }
 .builderCss h2 {
-  font-family: BigNoodleTitling;
+  font-family: 'Teko', sans-serif;
   font-size: 50px;
   color: #122E48;
   margin-bottom: 15px;
@@ -46,7 +46,7 @@
   font-weight: normal;
 }
 .builderCss h4 {
-  font-family: BigNoodleTitling;
+  font-family: 'Teko', sans-serif;
   font-size: 20px;
   color: #00BA95;
   /* Salmon design: */
@@ -252,7 +252,7 @@
   z-index: 1;
 }
 .builderCss #topBlock #tagline p {
-  font-family: BigNoodleTitling;
+  font-family: 'Teko', sans-serif;
   font-size: 20px;
   color: #FFFFFF;
   margin-top: 10px;

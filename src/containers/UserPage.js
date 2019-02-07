@@ -40,7 +40,7 @@ class UserPage extends Component {
       <div className='builderCss'>
         <Header type='signOut' />
         <div id="welcome">
-          <h2 className="fontsforweb_bignoodletitling center white">Hello {this.props.authenticated.displayName}!</h2>
+          <h2 className="center white">Hello {this.props.authenticated.displayName}!</h2>
           <div className="container">
             <div className="appQuote"><p>Did you know that the average time spent by recruiters looking at a resume is only 6 seconds?</p></div>
           </div>

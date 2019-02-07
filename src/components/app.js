@@ -36,8 +36,8 @@ export class App extends Component {
           <Switch>
             <Route exact path="/" component={LandingsPage} />
             <Route exact path="/notFound" component={NotFound} />
-            <Route exact path="/signin" component={SignInPage} />
             <Route exact path="/signup" component={SignUpPage} />
+            <Route exact path="/signin" component={SignInPage} />
             <Route exact path="/signinforgot" component={SignInForgot} />
             <Route exact path="/user" component={requireAuth(UserPage)} />
             <Route path="/edit/:id" component={requireAuth(ResumeFormPage)} />

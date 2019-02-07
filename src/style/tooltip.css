@@ -83,7 +83,7 @@
   border-radius: 6px;
   position: absolute;
   z-index: 10;
-  bottom: calc(108%);
+  bottom: calc(100% + 8px);
   left: -110px;
   color: #FFF !important;
   text-align: center;

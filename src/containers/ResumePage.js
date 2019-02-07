@@ -23,7 +23,7 @@ class Cv extends Component {
     if (loading ) {
       return <Loading />;
     }
-    
+
     if (notFound || !data.information) {
       return <NotFound />;
     }
@@ -32,7 +32,7 @@ class Cv extends Component {
     }
     return (
       <div id='ResumePage' className="resume1css">
-        <DownloadButton />
+        {/* <DownloadButton /> */}
         <div id='resume'>
           <div id='page1'>
             <div id='headerbg'/>

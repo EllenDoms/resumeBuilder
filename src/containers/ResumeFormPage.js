@@ -58,7 +58,7 @@ class ResumeNew extends Component {
     })
   }
   render() {
-    const { loading, data, formtab, handleSubmit, formValues } = this.props;
+    const { id, loading, data, formtab, handleSubmit, formValues } = this.props;
     if (loading || !formValues) {
       return <Loading />;
     }
@@ -72,12 +72,15 @@ class ResumeNew extends Component {
             <div id='formContent'>
               <ul className='tabs'>
                 {this.renderTabs()}
-                {!formValues.syncErrors ? <Link to={`/resume/demoresume`} target="_blank" className="btn btn-primary">View resume</Link> : <button className="btn btn-primary btn-disabled">View Resume</button>}
+                {!formValues.syncErrors ? <Link to={`/resume/${id}`} target="_blank" className="btn btn-primary">View resume</Link> : <button className="btn btn-primary btn-disabled">View Resume</button>}
               </ul>
 
               <div className='rightContent'>
                 <div id="tabTemplate" className={formtab == 'template' ? "visible" : "hidden" } >
-                  WIP
+                  <h3>Template</h3>
+                  <div className="container">
+                    <p>Work in progress! Multiple templates will be available somewhere in the future. You know, when I have the time.</p>
+                  </div>
                 </div>
                 <div id="tabGeneral" className={formtab == 'information' ? "visible" : "hidden" }>
                   <h3>General</h3>

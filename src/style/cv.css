@@ -24,8 +24,8 @@
 .resume1css #resume h1 {
   color: #495359;
   font-family: 'Rokkitt', serif;
-  font-size: 22px;
-  letter-spacing: 3px;
+  font-size: 20px;
+  letter-spacing: 2px;
   line-height: 35px;
   font-weight: 300;
 }
@@ -76,6 +76,7 @@
 .resume1css #resume #page1 .flexcontent.center .columnRight,
 .resume1css #resume #page2 .flexcontent.center .columnRight {
   padding: 0px;
+  width: 100%;
 }
 .resume1css #resume #page1 .flexcontent .columnLeft,
 .resume1css #resume #page2 .flexcontent .columnLeft {
@@ -326,7 +327,7 @@
   .resume1css #resume #page1 .flexcontent .columnRight,
   .resume1css #resume #page2 .flexcontent .columnRight {
     padding-top: 0px;
-    width: 100%;
+    width: calc(100% - 60px);
   }
   .resume1css #resume #page1 .columnRight,
   .resume1css #resume #page2 .columnRight {
